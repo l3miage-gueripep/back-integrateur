@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 @Data
 @Builder
 @Schema(description = "Correspond à la requête permettant de créer une entité miahoot")
-@Getter
 public class CreateMiahootRequest {
     @Schema(description = "nom du Miahoot", example = "Test mathematiques")
     private String nom;

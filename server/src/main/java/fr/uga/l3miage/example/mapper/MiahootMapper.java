@@ -11,8 +11,6 @@ import org.mapstruct.Mapping;
 public interface MiahootMapper {
     MiahootDTO toDto(Miahoot entity);
 
-    @Mapping(target = "description", source = "description")
-    @Mapping(target = "nom", source = "nom")
     Miahoot toEntity(CreateMiahootRequest request);
 
 }

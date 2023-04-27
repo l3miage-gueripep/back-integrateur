@@ -11,5 +11,6 @@ import java.util.Optional;
 @Repository
 public interface MiahootRepository extends JpaRepository<Miahoot,Long> {
     List<Miahoot> findAll();
+    Miahoot getById(Long id);
     List<Miahoot> findAllByNom(final String nom);
 }

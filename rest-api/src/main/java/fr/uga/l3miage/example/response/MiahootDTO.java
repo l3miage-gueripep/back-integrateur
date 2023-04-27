@@ -11,7 +11,6 @@ import org.springframework.lang.Nullable;
 @Schema(description = "correspond au DTO de l'entité Miahoot")
 public class MiahootDTO {
     @Schema(description = "correspond au nom du miahoot",example = "quizz jpa")
-    @Nullable
     String nom;
 
     @Schema(description = "correspond à la description du miahoot",example = "un des meilleurs quizz de la plateforme")

@@ -16,4 +16,6 @@ public class QuestionComponent {
     public void create(final Question entity){
         questionRepository.save(entity);
     }
+
+
 }

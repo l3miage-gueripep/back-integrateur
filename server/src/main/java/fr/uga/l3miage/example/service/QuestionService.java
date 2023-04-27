@@ -3,6 +3,7 @@ package fr.uga.l3miage.example.service;
 
 import fr.uga.l3miage.example.component.QuestionComponent;
 import fr.uga.l3miage.example.mapper.QuestionMapper;
+import fr.uga.l3miage.example.models.Miahoot;
 import fr.uga.l3miage.example.models.Question;
 import fr.uga.l3miage.example.request.CreateQuestionRequest;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,13 @@ public class QuestionService {
     public void createQuestion(final CreateQuestionRequest createQuestionRequest) {
         Question newQuestionEntity = questionMapper.toEntity(createQuestionRequest);
         questionComponent.create(newQuestionEntity);
+    }
+
+
+    private void bind(Long miahootId, Question question) throws EntityNotFoundException {
+        Miahoot miahoot = clientRepository.get(miahootId);
+        miahoot.addImage(question);
+        question.setProprietaire(miahoot);
     }
 
 }

@@ -27,9 +27,7 @@ public class MiahootService {
     private final MiahootMapper miahootMapper;
 
     public void createMiahoot(final CreateMiahootRequest createMiahootRequest) {
-        System.out.println(createMiahootRequest.getNom());
         Miahoot newMiahootEntity = miahootMapper.toEntity(createMiahootRequest);
-        System.out.println((newMiahootEntity.getNom()));
         miahootComponent.create(newMiahootEntity);
     }
 
