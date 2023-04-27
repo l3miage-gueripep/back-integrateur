@@ -1,12 +1,18 @@
 package fr.uga.l3miage.example.models;
 
-import lombok.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
+
 @Entity
 @Getter
+@Setter
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,10 +22,10 @@ public class Question {
     private String label;
 
     @ManyToOne
+    @JsonIgnore
     private Miahoot miahoot;
 
-    @OneToMany(mappedBy = "question")
-    private List<Reponse> reponses;
-
+    //@OneToMany(mappedBy = "question")
+    //private List<Reponse> reponses;
 
 }

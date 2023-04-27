@@ -107,8 +107,8 @@ Dans votre éditeur vous n'avez qu'à lancer le main dans le fichier `ExampleSpr
 
 # Etapes pour ajouter une opération sur une entité
 
-Ajouter l'operation dans le repository
-Ajouter l'operation correspondante dans le component
-Ajouter l'operation correspondante dans le service
-Créer le endpoint correspondant et l'implémenter
+* Ajouter l'operation dans le repository
+* Ajouter l'operation correspondante dans le component
+* Ajouter l'operation correspondante dans le service
+* Créer le endpoint correspondant et l'implémenter
 
