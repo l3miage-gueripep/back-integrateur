@@ -22,7 +22,6 @@ public class Question {
     private String label;
 
     @ManyToOne
-    @JsonIgnore
     private Miahoot miahoot;
 
     //@OneToMany(mappedBy = "question")

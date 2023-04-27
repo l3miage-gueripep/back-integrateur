@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface MiahootRepository extends JpaRepository<Miahoot,Long> {
+    @Override
     List<Miahoot> findAll();
     Optional<Miahoot> findById(Long id);
     List<Miahoot> findAllByNom(final String nom);

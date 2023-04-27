@@ -12,8 +12,10 @@ import org.springframework.lang.Nullable;
 public class QuestionDTO {
 
     @Schema(description = "correspond au label de la question",example = "comment on springboot ?")
-    @Nullable
     String label;
+
+    @Schema(description = "correspond à l'id du miahoot de la question", example="1")
+    Long idMiahoot;
 
 
 
