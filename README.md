@@ -104,3 +104,11 @@ Dans votre éditeur vous n'avez qu'à lancer le main dans le fichier `ExampleSpr
 
 * Vous trouverez le swagger, lorsque votre serveur est **démarré**, à l'adresse suivante : 
 <a href="http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config#/">swagger</a>
+
+# Etapes pour ajouter une opération sur une entité
+
+Ajouter l'operation dans le repository
+Ajouter l'operation correspondante dans le component
+Ajouter l'operation correspondante dans le service
+Créer le endpoint correspondant et l'implémenter
+
