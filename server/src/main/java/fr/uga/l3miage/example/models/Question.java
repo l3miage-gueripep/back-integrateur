@@ -10,9 +10,6 @@ import javax.persistence.*;
 import java.util.List;
 
 
-@Getter
-@Setter
-
 @Entity
 @Getter
 @Setter
