@@ -11,8 +11,12 @@ import fr.uga.l3miage.example.models.Miahoot;
 import fr.uga.l3miage.example.models.TestEntity;
 import fr.uga.l3miage.example.request.CreateMiahootRequest;
 import fr.uga.l3miage.example.request.CreateTestRequest;
+import fr.uga.l3miage.example.response.MiahootDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -23,7 +27,15 @@ public class MiahootService {
     private final MiahootMapper miahootMapper;
 
     public void createMiahoot(final CreateMiahootRequest createMiahootRequest) {
+        System.out.println(createMiahootRequest.getNom());
         Miahoot newMiahootEntity = miahootMapper.toEntity(createMiahootRequest);
+        System.out.println((newMiahootEntity.getNom()));
         miahootComponent.create(newMiahootEntity);
     }
+
+    public List<MiahootDTO> findAll(){
+        return miahootComponent.findAll().stream().map(miahootMapper::toDto).collect(Collectors.toList());
+    }
+
+
 }

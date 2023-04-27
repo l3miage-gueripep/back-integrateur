@@ -10,5 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface MiahootRepository extends JpaRepository<Miahoot,Long> {
+    List<Miahoot> findAll();
     List<Miahoot> findAllByNom(final String nom);
 }
