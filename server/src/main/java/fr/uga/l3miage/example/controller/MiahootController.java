@@ -30,6 +30,11 @@ public class MiahootController implements MiahootEndpoint {
         return miahootService.findAll();
     }
 
+    @Override
+    public MiahootDTO findById(Long id) {
+        return miahootService.findById(id);
+    }
+
 
 }
 

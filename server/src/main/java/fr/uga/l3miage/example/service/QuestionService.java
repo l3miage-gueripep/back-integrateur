@@ -23,10 +23,10 @@ public class QuestionService {
     }
 
 
-    private void bind(Long miahootId, Question question) throws EntityNotFoundException {
-        Miahoot miahoot = clientRepository.get(miahootId);
-        miahoot.addImage(question);
-        question.setProprietaire(miahoot);
-    }
+//    private void bind(Long miahootId, Question question) throws EntityNotFoundException {
+//        Miahoot miahoot = clientRepository.get(miahootId);
+//        miahoot.addImage(question);
+//        question.setProprietaire(miahoot);
+//    }
 
 }
