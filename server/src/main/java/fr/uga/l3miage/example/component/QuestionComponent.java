@@ -31,7 +31,7 @@ public class QuestionComponent {
         return questionRepository.findAll();
     }
 
-    public List<Question> findAllByMiahootId(Long miahootId) throws MiahootNotFoundException {
+    public List<Question> findAllByMiahootId(Long miahootId) throws NotFoundException {
         Miahoot miahoot = miahootComponent.findById(miahootId);
         System.out.println(miahoot.getQuestions());
         return questionRepository.findAllByMiahoot(miahoot);

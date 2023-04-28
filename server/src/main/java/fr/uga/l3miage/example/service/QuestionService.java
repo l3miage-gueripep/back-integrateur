@@ -41,8 +41,8 @@ public class QuestionService {
     public List<QuestionDTO> findAllByMiahootId(Long miahootId){
         try{
             return questionComponent.findAllByMiahootId(miahootId).stream().map(questionMapper::toDto).collect(Collectors.toList());
-        } catch(MiahootNotFoundException ex){
-            throw new MiahootNotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), miahootId, ex);
+        } catch(NotFoundException ex){
+            throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), miahootId, ex);
         }
     }
 
