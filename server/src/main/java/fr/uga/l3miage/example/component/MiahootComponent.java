@@ -2,6 +2,7 @@ package fr.uga.l3miage.example.component;
 
 import fr.uga.l3miage.example.error.MiahootNotFoundErrorResponse;
 import fr.uga.l3miage.example.exception.technical.MiahootNotFoundException;
+import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.exception.technical.TestEntityNotFoundException;
 import fr.uga.l3miage.example.mapper.MiahootMapper;
 import fr.uga.l3miage.example.models.Miahoot;
@@ -26,8 +27,8 @@ public class MiahootComponent {
         return miahootRepository.findAll();
     }
 
-    public Miahoot findById(Long id) throws MiahootNotFoundException {
-        return miahootRepository.findById(id).orElseThrow(() -> new MiahootNotFoundException(String.format("Aucun miahoot n'a été trouvé pour l'id [%d]", id), id));
+    public Miahoot findById(Long id) throws NotFoundException {
+        return miahootRepository.findById(id).orElseThrow(() -> new NotFoundException(String.format("Aucun miahoot n'a été trouvé pour l'id [%d]", id), id));
     }
 
 }

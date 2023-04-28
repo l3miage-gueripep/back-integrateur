@@ -4,6 +4,7 @@ package fr.uga.l3miage.example.service;
 import fr.uga.l3miage.example.component.MiahootComponent;
 import fr.uga.l3miage.example.component.QuestionComponent;
 import fr.uga.l3miage.example.exception.rest.MiahootNotFoundRestException;
+import fr.uga.l3miage.example.exception.rest.NotFoundRestException;
 import fr.uga.l3miage.example.exception.rest.QuestionNotFoundRestException;
 import fr.uga.l3miage.example.exception.rest.TestEntityNotFoundRestException;
 import fr.uga.l3miage.example.exception.technical.MiahootNotFoundException;
@@ -14,6 +15,7 @@ import fr.uga.l3miage.example.models.Question;
 import fr.uga.l3miage.example.request.CreateQuestionRequest;
 import fr.uga.l3miage.example.response.MiahootDTO;
 import fr.uga.l3miage.example.response.QuestionDTO;
+import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,8 +54,8 @@ public class QuestionService {
     public QuestionDTO findById(Long id) {
         try {
             return questionMapper.toDto(questionComponent.findById(id));
-        } catch (QuestionNotFoundException ex) {
-            throw new QuestionNotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()),id,ex);
+        } catch (NotFoundException ex) {
+            throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()),id,ex);
         }
     }
 
@@ -63,8 +65,8 @@ public class QuestionService {
             Miahoot miahoot = miahootComponent.findById(miahootId);
             miahoot.addQuestion(question);
             question.setMiahoot(miahoot);
-        } catch(MiahootNotFoundException ex){
-            throw new MiahootNotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), miahootId, ex);
+        } catch(NotFoundException ex){
+            throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), miahootId, ex);
         }
     }
 

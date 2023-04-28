@@ -23,7 +23,7 @@ public class Question {
 
     @ManyToOne
     Miahoot miahoot;
-    
+
     @OneToMany
     private List<Reponse> reponses;
 
