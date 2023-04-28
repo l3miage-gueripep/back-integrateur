@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import org.springframework.lang.Nullable;
 
+import java.util.List;
+
 @Data
 @Builder
 @Schema(description = "correspond au DTO de l'entité Question")
@@ -18,6 +20,9 @@ public class QuestionDTO {
 
     @Schema(description = "correspond à l'id du miahoot de la question", example="1")
     Long miahootId;
+
+    @Schema(description = "liste des réponses à la question")
+    List<ReponseDTO> reponses;
 
 
 

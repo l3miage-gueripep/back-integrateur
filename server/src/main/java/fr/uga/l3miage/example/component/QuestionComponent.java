@@ -28,7 +28,13 @@ public class QuestionComponent {
     }
 
     public List<Question> findAll(){
-        return questionRepository.findAll();
+        List<Question> questions = questionRepository.findAll();
+        for(Question question : questions){
+            for(Reponse reponse : question.getReponses()){
+                System.out.println(reponse.getId());
+            }
+        }
+        return questions;
     }
 
     public List<Question> findAllByMiahootId(Long miahootId) throws NotFoundException {
