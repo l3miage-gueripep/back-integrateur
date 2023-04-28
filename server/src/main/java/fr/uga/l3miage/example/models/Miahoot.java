@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 public class Miahoot {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @Column(nullable = false)

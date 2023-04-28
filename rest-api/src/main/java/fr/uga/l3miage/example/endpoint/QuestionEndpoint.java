@@ -26,6 +26,6 @@ public interface QuestionEndpoint {
     @ApiResponse(responseCode = "200", description = "Le miahoot a bien été trouvé.") //swagger
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("{miahootId}")
-    List<QuestionDTO> findAllByMiahootId(@RequestParam final Long miahootId);
+    List<QuestionDTO> findAllByMiahootId(@PathVariable final Long miahootId);
 
 }

@@ -13,5 +13,5 @@ public class CreateQuestionRequest {
     private String label;
 
     @Schema(description = "id du miahoot", example = "1")
-    private Long idMiahoot;
+    private Long miahootId;
 }

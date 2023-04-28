@@ -33,6 +33,6 @@ public interface MiahootEndpoint {
     @Operation(description = "Affiche le Miahoot correspondant à l'id donné")
     @ApiResponse(responseCode = "200", description = "Entité miahoot trouvée")
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping({"{id}"})
-    MiahootDTO findById(Long id);
+    @GetMapping("{id}")
+    MiahootDTO findById(@PathVariable Long id);
 }

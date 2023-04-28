@@ -13,11 +13,13 @@ import fr.uga.l3miage.example.request.CreateQuestionRequest;
 import fr.uga.l3miage.example.response.QuestionDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class QuestionService {
 
@@ -29,7 +31,7 @@ public class QuestionService {
     public void createQuestion(final CreateQuestionRequest createQuestionRequest) {
         Question newQuestionEntity = questionMapper.toEntity(createQuestionRequest);
         questionComponent.create(newQuestionEntity);
-        bind(createQuestionRequest.getIdMiahoot(), newQuestionEntity);
+        bind(createQuestionRequest.getMiahootId(), newQuestionEntity);
     }
     public List<QuestionDTO> findAllByMiahootId(Long miahootId){
         try{
