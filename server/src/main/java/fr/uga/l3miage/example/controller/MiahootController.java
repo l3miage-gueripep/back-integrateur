@@ -35,7 +35,10 @@ public class MiahootController implements MiahootEndpoint {
         return miahootService.findById(id);
     }
 
-
+    @Override
+    public void deleteMiahoot(Long id) {
+        miahootService.deleteById(id);
+    }
 
 
 }

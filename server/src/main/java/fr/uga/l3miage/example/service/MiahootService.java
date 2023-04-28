@@ -43,5 +43,9 @@ public class MiahootService {
         }
     }
 
+    public void deleteById(Long id) {
+        miahootComponent.deleteById(id);
+    }
+
 
 }

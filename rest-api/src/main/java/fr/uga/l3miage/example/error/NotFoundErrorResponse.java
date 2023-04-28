@@ -13,12 +13,12 @@ import org.springframework.http.HttpStatus;
 
 import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 
-@JsonTypeName(QuestionNotFoundErrorResponse.TYPE_NAME)
+@JsonTypeName(NotFoundErrorResponse.TYPE_NAME)
 @Getter
 @ToString(callSuper = true, exclude = "errorCodeSwaggerDocumentation")
 @EqualsAndHashCode(callSuper = true)
-public class QuestionNotFoundErrorResponse extends ErrorResponse {
-    protected static final String TYPE_NAME = "QUESTION_IS_NOT_FOUND";
+public class NotFoundErrorResponse extends ErrorResponse {
+    protected static final String TYPE_NAME = "NOT_FOUND";
 
     @Schema(name = "errorCode", description = "Ce code d'erreur est aussi le discriminant pour le polymorphisme", allowableValues = TYPE_NAME,
             implementation = String.class, accessMode = Schema.AccessMode.READ_WRITE)
@@ -30,7 +30,7 @@ public class QuestionNotFoundErrorResponse extends ErrorResponse {
 
     @Builder
     @Jacksonized
-    public QuestionNotFoundErrorResponse(String uri, HttpStatus httpStatus, ErrorCode errorCode, String errorMessage, Long id) {
+    public NotFoundErrorResponse(String uri, HttpStatus httpStatus, ErrorCode errorCode, String errorMessage, Long id) {
         super(uri, httpStatus, errorCode, errorMessage);
         this.id = id;
     }
