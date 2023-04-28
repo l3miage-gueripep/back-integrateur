@@ -16,13 +16,13 @@ import java.util.List;
 public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @Column(nullable = false)
-    private String label;
+    String label;
 
     @ManyToOne
-    private Miahoot miahoot;
+    Miahoot miahoot;
 
     //@OneToMany(mappedBy = "question")
     //private List<Reponse> reponses;
