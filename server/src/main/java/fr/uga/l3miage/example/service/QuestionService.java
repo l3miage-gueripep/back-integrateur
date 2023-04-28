@@ -10,6 +10,7 @@ import fr.uga.l3miage.example.mapper.QuestionMapper;
 import fr.uga.l3miage.example.models.Miahoot;
 import fr.uga.l3miage.example.models.Question;
 import fr.uga.l3miage.example.request.CreateQuestionRequest;
+import fr.uga.l3miage.example.response.MiahootDTO;
 import fr.uga.l3miage.example.response.QuestionDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -39,6 +40,10 @@ public class QuestionService {
         } catch(MiahootNotFoundException ex){
             throw new MiahootNotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), miahootId, ex);
         }
+    }
+
+    public List<QuestionDTO> findAll(){
+        return questionComponent.findAll().stream().map(questionMapper::toDto).collect(Collectors.toList());
     }
 
 

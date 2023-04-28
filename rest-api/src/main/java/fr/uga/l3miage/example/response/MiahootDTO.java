@@ -10,6 +10,7 @@ import org.springframework.lang.Nullable;
 @Builder
 @Schema(description = "correspond au DTO de l'entité Miahoot")
 public class MiahootDTO {
+
     @Schema(description = "id du Miahoot", example = "1")
     Long id;
 
