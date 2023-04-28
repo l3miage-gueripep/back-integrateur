@@ -34,7 +34,18 @@ public interface QuestionEndpoint {
     @Operation(description = "Obtention des Questions pour un Miahoot donné") //swagger
     @ApiResponse(responseCode = "200", description = "Le miahoot a bien été trouvé.") //swagger
     @ResponseStatus(HttpStatus.OK)
+<<<<<<< HEAD
     @GetMapping("miahoot/{miahootId}/questions")
+=======
+    @GetMapping("{miahootId}/question")
+>>>>>>> cc70784489f0cb6f5fb4ca76230195d1177f7a21
     List<QuestionDTO> findAllByMiahootId(@PathVariable final Long miahootId);
+
+
+    @Operation(description = "Affiche la question correspondant à l'id donné")
+    @ApiResponse(responseCode = "200", description = "Entité question trouvée")
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("{questionId}")
+    QuestionDTO findById(@PathVariable Long id);
 
 }

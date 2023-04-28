@@ -23,7 +23,6 @@ public class QuestionController implements QuestionEndpoint {
         questionService.createQuestion(label, miahootId);
     }
 
-
     @Override
     public List<QuestionDTO> getAll() {
         return questionService.findAll();
@@ -32,5 +31,10 @@ public class QuestionController implements QuestionEndpoint {
     @Override
     public List<QuestionDTO> findAllByMiahootId(Long miahootId) {
         return questionService.findAllByMiahootId(miahootId);
+    }
+
+    @Override
+    public QuestionDTO findById(Long questionId) {
+        return questionService.findById(questionId);
     }
 }

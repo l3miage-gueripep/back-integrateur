@@ -23,12 +23,15 @@ public class Question {
 
     @ManyToOne
     Miahoot miahoot;
-
-    @OneToMany(mappedBy = "question")
+    
+    @OneToMany
     private List<Reponse> reponses;
 
     public void addReponse(Reponse reponse){
         this.reponses.add(reponse);
     }
+
+
+
 
 }
