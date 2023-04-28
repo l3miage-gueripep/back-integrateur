@@ -4,8 +4,10 @@ package fr.uga.l3miage.example.service;
 import fr.uga.l3miage.example.component.MiahootComponent;
 import fr.uga.l3miage.example.component.QuestionComponent;
 import fr.uga.l3miage.example.exception.rest.MiahootNotFoundRestException;
+import fr.uga.l3miage.example.exception.rest.QuestionNotFoundRestException;
 import fr.uga.l3miage.example.exception.rest.TestEntityNotFoundRestException;
 import fr.uga.l3miage.example.exception.technical.MiahootNotFoundException;
+import fr.uga.l3miage.example.exception.technical.QuestionNotFoundException;
 import fr.uga.l3miage.example.mapper.QuestionMapper;
 import fr.uga.l3miage.example.models.Miahoot;
 import fr.uga.l3miage.example.models.Question;
@@ -44,6 +46,15 @@ public class QuestionService {
 
     public List<QuestionDTO> findAll(){
         return questionComponent.findAll().stream().map(questionMapper::toDto).collect(Collectors.toList());
+    }
+
+
+    public QuestionDTO findById(Long id) {
+        try {
+            return questionMapper.toDto(questionComponent.findById(id));
+        } catch (QuestionNotFoundException ex) {
+            throw new QuestionNotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()),id,ex);
+        }
     }
 
 

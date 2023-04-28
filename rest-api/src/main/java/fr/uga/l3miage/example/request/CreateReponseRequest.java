@@ -17,4 +17,7 @@ public class CreateReponseRequest {
     @Schema(description = "valeur de vérité de l'objet reponse", example = "false")
     private boolean estValide;
 
+    @Schema(description = "id de la question", example = "1")
+    private Long questionId;
+
 }
