@@ -11,6 +11,9 @@ import org.springframework.lang.Nullable;
 @Schema(description = "correspond au DTO de l'entité Question")
 public class QuestionDTO {
 
+    @Schema(description = "id de la question", example = "1")
+    Long id;
+
     @Schema(description = "correspond au label de la question",example = "comment on springboot ?")
     String label;
 
