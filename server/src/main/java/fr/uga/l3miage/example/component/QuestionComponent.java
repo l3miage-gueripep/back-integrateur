@@ -1,8 +1,7 @@
 package fr.uga.l3miage.example.component;
 
 
-import fr.uga.l3miage.example.exception.rest.QuestionNotFoundRestException;
-import fr.uga.l3miage.example.exception.technical.MiahootNotFoundException;
+
 import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.mapper.QuestionMapper;
 import fr.uga.l3miage.example.models.Miahoot;

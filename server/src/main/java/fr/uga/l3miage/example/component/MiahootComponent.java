@@ -1,8 +1,9 @@
 package fr.uga.l3miage.example.component;
 
 import fr.uga.l3miage.example.error.MiahootNotFoundErrorResponse;
-import fr.uga.l3miage.example.exception.rest.MiahootNotFoundRestException;
-import fr.uga.l3miage.example.exception.technical.MiahootNotFoundException;
+
+import fr.uga.l3miage.example.exception.rest.NotFoundRestException;
+
 import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.exception.technical.TestEntityNotFoundException;
 import fr.uga.l3miage.example.mapper.MiahootMapper;
@@ -37,8 +38,8 @@ public class MiahootComponent {
     public void deleteById(Long id) {
         try {
             Miahoot m = findById(id);
-        } catch (MiahootNotFoundException ex) {
-            throw new MiahootNotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), id, ex);
+        } catch (NotFoundException ex) {
+            throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), id, ex);
         }
         miahootRepository.deleteById(id);
     }

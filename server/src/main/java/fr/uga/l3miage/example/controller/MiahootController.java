@@ -1,7 +1,6 @@
 package fr.uga.l3miage.example.controller;
 
 import fr.uga.l3miage.example.endpoint.MiahootEndpoint;
-import fr.uga.l3miage.example.exception.technical.MiahootNotFoundException;
 import fr.uga.l3miage.example.mapper.MiahootMapper;
 import fr.uga.l3miage.example.models.Miahoot;
 import fr.uga.l3miage.example.request.CreateMiahootRequest;
