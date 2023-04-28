@@ -14,4 +14,5 @@ public interface MiahootRepository extends JpaRepository<Miahoot,Long> {
     List<Miahoot> findAll();
     Optional<Miahoot> findById(Long id);
     List<Miahoot> findAllByNom(final String nom);
+
 }

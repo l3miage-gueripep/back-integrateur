@@ -1,13 +1,17 @@
 package fr.uga.l3miage.example.endpoint;
 
 import fr.uga.l3miage.example.annotations.Error400Custom;
+import fr.uga.l3miage.example.error.TestEntityNotDeletedErrorResponse;
 import fr.uga.l3miage.example.request.CreateMiahootRequest;
 import fr.uga.l3miage.example.request.CreateTestRequest;
 import fr.uga.l3miage.example.response.MiahootDTO;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -35,4 +39,12 @@ public interface MiahootEndpoint {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("{id}")
     MiahootDTO findById(@PathVariable Long id);
+
+    @Operation(description = "Suppression d'une entité Miahoot en bd")
+    @ApiResponse(responseCode = "200", description = "Le miahoot a bien été supprimé")
+    @ApiResponse(responseCode = "418", description = "Renvoie une erreur 418 si l'entité n'a pu être supprimée",
+            content = @Content(schema = @Schema(implementation = TestEntityNotDeletedErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("{id}")
+    void deleteMiahoot(@PathVariable Long id);
 }
