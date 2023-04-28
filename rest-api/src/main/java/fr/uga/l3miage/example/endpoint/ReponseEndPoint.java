@@ -15,17 +15,17 @@ import java.util.List;
 @Tag(name = "Reponse tag") //swagger
 @CrossOrigin
 @RestController
-@RequestMapping("reponse/")
+@RequestMapping
 public interface ReponseEndPoint {
     @Operation(description = "Création d'une entité Reponse") //swagger
     @ApiResponse(responseCode = "201", description = "L'entité Reponse a bien été créée.") //swagger
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
-    void createEntityReponse(@Valid @RequestBody final CreateReponseRequest request);
+    @PostMapping("question/{questionId}/reponse")
+    void createEntityReponse(Long questionId,@Valid @RequestBody final CreateReponseRequest request);
 
     @Operation(description = "Affiche tous les reponses existants")
     @ApiResponse(responseCode = "200", description = "Entités reponses trouvées")
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping
+    @GetMapping("reponse/")
     List<ReponseDTO> getAll();
 }

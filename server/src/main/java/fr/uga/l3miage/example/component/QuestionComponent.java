@@ -2,6 +2,7 @@ package fr.uga.l3miage.example.component;
 
 
 import fr.uga.l3miage.example.exception.technical.MiahootNotFoundException;
+import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.mapper.QuestionMapper;
 import fr.uga.l3miage.example.models.Miahoot;
 import fr.uga.l3miage.example.models.Question;
@@ -33,6 +34,10 @@ public class QuestionComponent {
         Miahoot miahoot = miahootComponent.findById(miahootId);
         System.out.println(miahoot.getQuestions());
         return questionRepository.findAllByMiahoot(miahoot);
+    }
+
+    public Question findById(Long id) throws NotFoundException {
+        return questionRepository.findById(id).orElseThrow(() -> new NotFoundException(String.format("Aucune Question n'a été trouvée pour l'id [%d]", id), id));
     }
 
 

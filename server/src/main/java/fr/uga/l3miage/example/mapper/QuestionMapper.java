@@ -10,6 +10,6 @@ import org.mapstruct.Mapping;
 public interface QuestionMapper {
     @Mapping(source = "miahoot.id", target = "miahootId")
     QuestionDTO toDto(Question entity);
-    @Mapping(source = "miahootId", target = "miahoot.id")
-    Question toEntity(CreateQuestionRequest request);
+
+    Question toEntity(String label);
 }

@@ -2,6 +2,7 @@ package fr.uga.l3miage.example.config.handler;
 
 import fr.uga.l3miage.example.error.ErrorResponse;
 import fr.uga.l3miage.example.error.TestNotFoundErrorResponse;
+import fr.uga.l3miage.example.exception.rest.MiahootNotFoundRestException;
 import fr.uga.l3miage.example.exception.rest.TestEntityNotFoundRestException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,7 +41,7 @@ public class NotFoundExceptionHandler {
      * @param exception L'exception qui a été levée dans le code server, et qui a été catch par ce handler
      * @return {@link ResponseEntity}<{@link TestNotFoundErrorResponse}></li>
      */
-    @ExceptionHandler(TestEntityNotFoundRestException.class)
+    @ExceptionHandler({TestEntityNotFoundRestException.class, MiahootNotFoundRestException.class})
     public ResponseEntity<ErrorResponse> handle(HttpServletRequest httpServletRequest, Exception exception) {
         TestEntityNotFoundRestException ex = (TestEntityNotFoundRestException) exception;
         final TestNotFoundErrorResponse response = TestNotFoundErrorResponse.builder()

@@ -15,4 +15,7 @@ public class ReponseDTO {
     @Schema(description = "correspond au valeur de validation du reponse",example = "true")
     boolean estValide;
 
+    @Schema(description = "Id de la réponse associée", example = "2")
+    Long questionId;
+
 }

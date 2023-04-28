@@ -8,9 +8,8 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface ReponseMapper{
+    @Mapping(source = "question.id", target = "questionId")
     ReponseDTO toDto(Reponse entity);
 
-    @Mapping(target = "estValide", source = "estValide")
-    @Mapping(target = "label", source = "label")
     Reponse toEntity(CreateReponseRequest request);
 }

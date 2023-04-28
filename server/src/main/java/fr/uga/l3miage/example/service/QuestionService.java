@@ -29,10 +29,10 @@ public class QuestionService {
     private final MiahootComponent miahootComponent;
     private final QuestionMapper questionMapper;
 
-    public void createQuestion(final CreateQuestionRequest createQuestionRequest) {
-        Question newQuestionEntity = questionMapper.toEntity(createQuestionRequest);
+    public void createQuestion(final String label, Long miahootId) {
+        Question newQuestionEntity = questionMapper.toEntity(label);
         questionComponent.create(newQuestionEntity);
-        bind(createQuestionRequest.getMiahootId(), newQuestionEntity);
+        bind(miahootId, newQuestionEntity);
     }
     public List<QuestionDTO> findAllByMiahootId(Long miahootId){
         try{
