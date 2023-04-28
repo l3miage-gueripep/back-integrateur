@@ -17,8 +17,8 @@ public class ReponseController implements ReponseEndPoint {
     private final ReponseService reponseService;
 
     @Override
-    public void createEntityReponse(@Valid @RequestBody final CreateReponseRequest request) {
-        reponseService.createReponse(request);
+    public void createEntityReponse(final Long questionId, final CreateReponseRequest request) {
+        reponseService.createReponse(questionId, request);
     }
 
     @Override

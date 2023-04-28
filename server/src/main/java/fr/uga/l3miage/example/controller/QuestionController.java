@@ -19,8 +19,8 @@ public class QuestionController implements QuestionEndpoint {
     private final QuestionService questionService;
 
     @Override
-    public void createEntityQuestion(@Valid @RequestBody final CreateQuestionRequest request) {
-        questionService.createQuestion(request);
+    public void createEntityQuestion(final Long miahootId, final String label) {
+        questionService.createQuestion(label, miahootId);
     }
 
     @Override

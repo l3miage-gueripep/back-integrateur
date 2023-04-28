@@ -25,14 +25,13 @@ public class Question {
     Miahoot miahoot;
 
     @OneToMany
-    List<Reponse> reponses;
-
+    private List<Reponse> reponses;
 
     public void addReponse(Reponse reponse){
-        reponses.add(reponse);
+        this.reponses.add(reponse);
     }
 
-    //@OneToMany(mappedBy = "question")
-    //private List<Reponse> reponses;
+
+
 
 }

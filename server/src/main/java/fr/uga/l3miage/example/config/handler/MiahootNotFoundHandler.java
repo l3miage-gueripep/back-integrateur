@@ -22,13 +22,9 @@ import javax.servlet.http.HttpServletRequest;
 public class MiahootNotFoundHandler {
 
     @ExceptionHandler(MiahootNotFoundRestException.class)
-    public ResponseEntity<ErrorResponse> handle(HttpServletRequest httpServletRequest, Exception exception) {
+    public ResponseEntity<MiahootNotFoundErrorResponse> handle(HttpServletRequest httpServletRequest, Exception exception) {
         MiahootNotFoundRestException ex = (MiahootNotFoundRestException) exception;
         final MiahootNotFoundErrorResponse response = MiahootNotFoundErrorResponse.builder()
-                .uri(httpServletRequest.getRequestURI())
-                .httpStatus(ex.getHttpStatus())
-                .errorMessage(ex.getMessage())
-                .errorCode(ex.getErrorCode())
                 .id(ex.getId())
                 .build();
 

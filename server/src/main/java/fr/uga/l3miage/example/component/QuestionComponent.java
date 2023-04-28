@@ -3,7 +3,7 @@ package fr.uga.l3miage.example.component;
 
 import fr.uga.l3miage.example.exception.rest.QuestionNotFoundRestException;
 import fr.uga.l3miage.example.exception.technical.MiahootNotFoundException;
-import fr.uga.l3miage.example.exception.technical.QuestionNotFoundException;
+import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.mapper.QuestionMapper;
 import fr.uga.l3miage.example.models.Miahoot;
 import fr.uga.l3miage.example.models.Question;
@@ -27,19 +27,18 @@ public class QuestionComponent {
         questionRepository.save(entity);
     }
 
-
-    public Question findById(Long id) throws QuestionNotFoundException {
-        return questionRepository.findById(id).orElseThrow(() -> new QuestionNotFoundException(String.format("Aucune question n'a été trouvé pour l'id [%d]", id), id));
-    }
-
     public List<Question> findAll(){
         return questionRepository.findAll();
     }
 
-    public List<Question> findAllByMiahootId(Long miahootId) throws MiahootNotFoundException {
+    public List<Question> findAllByMiahootId(Long miahootId) throws NotFoundException {
         Miahoot miahoot = miahootComponent.findById(miahootId);
         System.out.println(miahoot.getQuestions());
         return questionRepository.findAllByMiahoot(miahoot);
+    }
+
+    public Question findById(Long id) throws NotFoundException {
+        return questionRepository.findById(id).orElseThrow(() -> new NotFoundException(String.format("Aucune Question n'a été trouvée pour l'id [%d]", id), id));
     }
 
 

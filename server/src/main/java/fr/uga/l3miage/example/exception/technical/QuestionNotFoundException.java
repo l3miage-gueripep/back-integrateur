@@ -3,6 +3,7 @@ package fr.uga.l3miage.example.exception.technical;
 import lombok.Getter;
 
 @Getter
+
 public class QuestionNotFoundException extends  Exception {
     private  final Long id;
 

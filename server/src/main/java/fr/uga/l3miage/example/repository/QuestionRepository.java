@@ -14,6 +14,7 @@ public interface QuestionRepository extends JpaRepository<Question,Long> {
     @Override
     List<Question> findAll();
 
+    @Override
     Optional<Question> findById(Long id);
 
     List<Question> findAllByMiahoot(Miahoot miahoot);

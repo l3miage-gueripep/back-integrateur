@@ -24,7 +24,7 @@ import org.mapstruct.MappingTarget;
  * </ul>
  */
 @Mapper(uses = TestMapperUtils.class)
-public interface TestMapper {
+public interface    TestMapper {
     /**
      * Cette fonction va faire le mapping d'une entité vers le <b color="yellow">DTO</b> de Test
      * @param testEntity l'entité à mapper en <b color="yellow">DTO</b>
