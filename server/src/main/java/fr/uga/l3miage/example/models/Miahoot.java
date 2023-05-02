@@ -23,6 +23,15 @@ public class Miahoot {
     @OneToMany(mappedBy = "miahoot", cascade = CascadeType.ALL) //supprime toutes les questions du miahoot lorsqu'une est supprimée
     List<Question> questions;
 
+    @ManyToMany(mappedBy = "miahootsConcus")
+    List<Utilisateur> concepteurs;
+
+    @ManyToMany(mappedBy = "miahootsPresentes")
+    List<Utilisateur> presentateurs;
+
+    @ManyToMany(mappedBy = "miahootsPaticipes")
+    List<Utilisateur> participants;
+
     public void addQuestion(Question question){
         questions.add(question);
     }
