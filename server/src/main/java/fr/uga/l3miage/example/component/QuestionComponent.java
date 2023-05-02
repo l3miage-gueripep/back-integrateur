@@ -10,6 +10,8 @@ import fr.uga.l3miage.example.models.Question;
 import fr.uga.l3miage.example.models.Reponse;
 import fr.uga.l3miage.example.repository.MiahootRepository;
 import fr.uga.l3miage.example.repository.QuestionRepository;
+import fr.uga.l3miage.example.response.MiahootDTO;
+import fr.uga.l3miage.example.response.QuestionDTO;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.weaver.ast.Not;
 import org.hibernate.loader.plan.spi.QuerySpaceUidNotRegisteredException;
@@ -52,6 +54,14 @@ public class QuestionComponent {
         Question question = findById(id);
         questionRepository.deleteById(id);
     }
+
+    public void updateQuestion(final Long id, final QuestionDTO questionDTO) throws  NotFoundException {
+        Question actualQuestion = questionRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(String.format("Aucune entité n'a été trouvée pour l'id [%s]",id), id));
+        questionMapper.mergeQuestion(actualQuestion, questionDTO);
+        questionRepository.save(actualQuestion);
+    }
+
 
 
 }

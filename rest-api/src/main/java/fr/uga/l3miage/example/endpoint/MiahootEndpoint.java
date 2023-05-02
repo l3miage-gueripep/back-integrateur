@@ -51,7 +51,6 @@ public interface MiahootEndpoint {
     @DeleteMapping("{id}")
     void deleteMiahoot(@PathVariable Long id);
 
-
     @Operation(description = "Mise à jour d'une entité miahoot")
     @ApiResponse(responseCode = "202", description = "L'entité à bien été mis à jour")
     @ApiResponse(responseCode = "404", description = "Renvoie une erreur 404 si l'entité n'est pas trouvée",

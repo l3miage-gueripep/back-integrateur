@@ -77,4 +77,14 @@ public class QuestionService {
         }
     }
 
+    public void update(final Long id, final QuestionDTO questionDTO) {
+        try {
+            questionComponent.updateQuestion(id,questionDTO);
+        } catch (NotFoundException e) {
+            throw new NotFoundRestException(String.format("Impossible de supprimer l'entité. Raison : [%s]", e.getMessage()), id, e);
+        }
+    }
+
+
+
 }
