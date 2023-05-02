@@ -25,4 +25,9 @@ public class ReponseController implements ReponseEndPoint {
     public List<ReponseDTO> getAll() {
         return reponseService.findAll();
     }
+
+    @Override
+    public void deleteReponse(Long id) {
+
+    }
 }

@@ -12,4 +12,6 @@ import java.util.List;
 public interface ReponseRepository extends JpaRepository<Reponse,Long> {
     List<Reponse> findAll();
     List<Reponse> findAllByLabel(final String label);
+    @Override
+    void deleteById(Long id);
 }

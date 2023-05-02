@@ -1,6 +1,8 @@
 package fr.uga.l3miage.example.component;
 
+import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.mapper.ReponseMapper;
+import fr.uga.l3miage.example.models.Question;
 import fr.uga.l3miage.example.models.Reponse;
 import fr.uga.l3miage.example.repository.ReponseRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,5 +22,14 @@ public class ReponseComponent {
 
     public List<Reponse> findAll(){
         return reponseRepository.findAll();
+    }
+
+    public Reponse findById(Long id) throws NotFoundException {
+        return reponseRepository.findById(id).orElseThrow(() -> new NotFoundException(String.format("Aucune Reponse n'a été trouvée pour l'id [%d]", id), id));
+    }
+
+    public void deleteById(Long id) throws NotFoundException {
+        Reponse reponse = findById(id);
+        reponseRepository.deleteById(id);
     }
 }
