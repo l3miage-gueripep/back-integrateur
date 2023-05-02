@@ -10,17 +10,10 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @Setter
-public abstract class Participant extends Utilisateur{
-
-
-    private Long participantId;
-
-    public Participant() {
-    }
+public class Participant extends Utilisateur {
 
     public Participant(Long userId, String userName, String login) {
-        super(userId,userName,login);
-        this.participantId = userId;
+        super(userId, userName, login);
     }
-
 }
+
