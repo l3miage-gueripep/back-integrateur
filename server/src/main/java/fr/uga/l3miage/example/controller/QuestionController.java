@@ -37,4 +37,9 @@ public class QuestionController implements QuestionEndpoint {
     public QuestionDTO findById(Long questionId) {
         return questionService.findById(questionId);
     }
+
+    @Override
+    public void deleteQuestion(Long id) {
+        questionService.deleteById(id);
+    }
 }
