@@ -2,6 +2,7 @@ package fr.uga.l3miage.example.component;
 
 
 
+import fr.uga.l3miage.example.exception.rest.NotFoundRestException;
 import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.mapper.QuestionMapper;
 import fr.uga.l3miage.example.models.Miahoot;
@@ -10,6 +11,7 @@ import fr.uga.l3miage.example.models.Reponse;
 import fr.uga.l3miage.example.repository.MiahootRepository;
 import fr.uga.l3miage.example.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
+import org.aspectj.weaver.ast.Not;
 import org.hibernate.loader.plan.spi.QuerySpaceUidNotRegisteredException;
 import org.springframework.stereotype.Component;
 
@@ -44,6 +46,11 @@ public class QuestionComponent {
 
     public Question findById(Long id) throws NotFoundException {
         return questionRepository.findById(id).orElseThrow(() -> new NotFoundException(String.format("Aucune Question n'a été trouvée pour l'id [%d]", id), id));
+    }
+
+    public void deleteById(Long id) throws NotFoundException {
+        Question question = findById(id);
+        questionRepository.deleteById(id);
     }
 
 

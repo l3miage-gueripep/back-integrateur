@@ -69,4 +69,12 @@ public class QuestionService {
         }
     }
 
+    public void deleteById(Long id) {
+        try {
+            questionComponent.deleteById(id);
+        } catch (NotFoundException ex) {
+            throw new NotFoundRestException(String.format("Impossible de supprimer l'entité. Raison : [%s]", ex.getMessage()), id, ex);
+        }
+    }
+
 }

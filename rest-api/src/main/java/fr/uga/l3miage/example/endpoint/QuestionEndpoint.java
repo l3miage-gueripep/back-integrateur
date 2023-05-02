@@ -1,13 +1,17 @@
 package fr.uga.l3miage.example.endpoint;
 
 
+import fr.uga.l3miage.example.error.TestEntityNotDeletedErrorResponse;
 import fr.uga.l3miage.example.request.CreateQuestionRequest;
 import fr.uga.l3miage.example.response.MiahootDTO;
 import fr.uga.l3miage.example.response.QuestionDTO;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,5 +47,13 @@ public interface QuestionEndpoint {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("question/{questionId}")
     QuestionDTO findById(@PathVariable Long id);
+
+    @Operation(description = "Suppression d'une entité Question en bd")
+    @ApiResponse(responseCode = "200", description = "La question a bien été supprimée")
+    @ApiResponse(responseCode = "418", description = "Renvoie une erreur 418 si l'entité n'a pu être supprimée",
+            content = @Content(schema = @Schema(implementation = TestEntityNotDeletedErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping("question/{id}")
+    void deleteQuestion(@PathVariable Long id);
 
 }
