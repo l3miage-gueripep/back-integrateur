@@ -20,7 +20,7 @@ public class Miahoot {
 
     String description;
 
-    @OneToMany
+    @OneToMany(mappedBy = "miahoot")
     List<Question> questions;
 
     public void addQuestion(Question question){

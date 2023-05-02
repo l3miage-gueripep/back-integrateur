@@ -24,7 +24,7 @@ public class Question {
     @ManyToOne
     Miahoot miahoot;
 
-    @OneToMany
+    @OneToMany(mappedBy = "question")
     private List<Reponse> reponses;
 
     public void addReponse(Reponse reponse){

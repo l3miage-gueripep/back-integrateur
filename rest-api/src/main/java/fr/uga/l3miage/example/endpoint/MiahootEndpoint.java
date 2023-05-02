@@ -55,7 +55,6 @@ public interface MiahootEndpoint {
     @ApiResponse(responseCode = "202", description = "L'entité à bien été mis à jour")
     @ApiResponse(responseCode = "404", description = "Renvoie une erreur 404 si l'entité n'est pas trouvée",
             content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
-    @Error400Custom
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PatchMapping("{id}")
     void updateMiahoot(@PathVariable final Long id,@RequestBody final MiahootDTO miahootDTO);
