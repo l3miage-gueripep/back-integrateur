@@ -29,7 +29,7 @@ public class Utilisateur {
     List<Miahoot> miahootsPresentes;
 
     @ManyToMany
-    List<Miahoot> miahootsPaticipes;
+    List<Miahoot> miahootsParticipes;
 
     @ManyToMany
     private List<Reponse> reponses;
