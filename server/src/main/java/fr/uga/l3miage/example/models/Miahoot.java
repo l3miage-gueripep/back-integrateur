@@ -29,7 +29,7 @@ public class Miahoot {
     @ManyToMany(mappedBy = "miahootsPresentes")
     List<Utilisateur> presentateurs;
 
-    @ManyToMany(mappedBy = "miahootsPaticipes")
+    @ManyToMany(mappedBy = "miahootsParticipes")
     List<Utilisateur> participants;
 
     public void addQuestion(Question question){
