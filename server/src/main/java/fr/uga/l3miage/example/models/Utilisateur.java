@@ -4,30 +4,42 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @Setter
-public abstract class Utilisateur {
+public class Utilisateur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long Id;
 
     @Column(nullable = false)
-    private String userName;
+    private String username;
 
     @Column(nullable = false)
-    private String login;
+    private String firebaseId;
+
+    @ManyToMany
+    List<Miahoot> miahootsConcus;
+
+    @ManyToMany
+    List<Miahoot> miahootsPresentes;
+
+    @ManyToMany
+    List<Miahoot> miahootsPaticipes;
+
+
 
     public Utilisateur() {
     }
 
     public Utilisateur(Long userId, String userName, String login) {
-        this.userId = userId;
-        this.userName = userName;
-        this.login = login;
+        this.Id = userId;
+        this.username = userName;
+        this.firebaseId = firebaseId;
     }
 }
 
