@@ -31,6 +31,9 @@ public class Utilisateur {
     @ManyToMany
     List<Miahoot> miahootsPaticipes;
 
+    @ManyToMany
+    private List<Reponse> reponses;
+
 
 
     public Utilisateur() {
