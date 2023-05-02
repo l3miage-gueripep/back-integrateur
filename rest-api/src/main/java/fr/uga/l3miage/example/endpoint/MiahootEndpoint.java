@@ -1,10 +1,13 @@
 package fr.uga.l3miage.example.endpoint;
 
 import fr.uga.l3miage.example.annotations.Error400Custom;
+import fr.uga.l3miage.example.error.NotFoundErrorResponse;
 import fr.uga.l3miage.example.error.TestEntityNotDeletedErrorResponse;
+import fr.uga.l3miage.example.error.TestNotFoundErrorResponse;
 import fr.uga.l3miage.example.request.CreateMiahootRequest;
 import fr.uga.l3miage.example.request.CreateTestRequest;
 import fr.uga.l3miage.example.response.MiahootDTO;
+import fr.uga.l3miage.example.response.Test;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -47,4 +50,15 @@ public interface MiahootEndpoint {
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("{id}")
     void deleteMiahoot(@PathVariable Long id);
+
+
+    @Operation(description = "Mise à jour d'une entité miahoot")
+    @ApiResponse(responseCode = "202", description = "L'entité à bien été mis à jour")
+    @ApiResponse(responseCode = "404", description = "Renvoie une erreur 404 si l'entité n'est pas trouvée",
+            content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
+    @Error400Custom
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PatchMapping("{id}")
+    void updateMiahoot(@PathVariable final Long id,@RequestBody final MiahootDTO miahootDTO);
+
 }

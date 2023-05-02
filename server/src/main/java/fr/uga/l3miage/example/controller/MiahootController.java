@@ -40,6 +40,11 @@ public class MiahootController implements MiahootEndpoint {
         miahootService.deleteById(id);
     }
 
+    @Override
+    public void updateMiahoot(Long id, MiahootDTO miahootDTO) {
+        miahootService.update(id,miahootDTO);
+    }
+
 
 }
 

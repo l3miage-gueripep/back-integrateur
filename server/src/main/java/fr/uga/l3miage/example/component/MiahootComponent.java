@@ -4,6 +4,8 @@ import fr.uga.l3miage.example.error.MiahootNotFoundErrorResponse;
 
 import fr.uga.l3miage.example.exception.rest.NotFoundRestException;
 
+import fr.uga.l3miage.example.exception.technical.DescriptionAlreadyExistException;
+import fr.uga.l3miage.example.exception.technical.IsNotTestException;
 import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.exception.technical.TestEntityNotFoundException;
 import fr.uga.l3miage.example.mapper.MiahootMapper;
@@ -11,6 +13,7 @@ import fr.uga.l3miage.example.models.Miahoot;
 import fr.uga.l3miage.example.models.TestEntity;
 import fr.uga.l3miage.example.repository.MiahootRepository;
 import fr.uga.l3miage.example.response.MiahootDTO;
+import fr.uga.l3miage.example.response.Test;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -44,4 +47,11 @@ public class MiahootComponent {
         miahootRepository.deleteById(id);
     }
 
+    public void updateMiahoot(final Long id, final MiahootDTO miahoot) throws  NotFoundException {
+
+            Miahoot actualMiahoot = miahootRepository.findById(id)
+                    .orElseThrow(() -> new NotFoundException(String.format("Aucune entité n'a été trouvée pour l'id [%s]",id), id));
+            miahootMapper.mergeTestEntity(actualMiahoot, miahoot);
+            miahootRepository.save(actualMiahoot);
+    }
 }
