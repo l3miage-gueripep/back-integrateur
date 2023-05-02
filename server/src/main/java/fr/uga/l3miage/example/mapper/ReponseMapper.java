@@ -12,5 +12,6 @@ public interface ReponseMapper{
     @Mapping(source = "question.id", target = "questionId")
     ReponseDTO toDto(Reponse entity);
 
-    Reponse toEntity(CreateReponseRequest request);
+    Reponse toEntity(String label);
+
 }

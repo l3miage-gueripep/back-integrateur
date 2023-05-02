@@ -5,10 +5,8 @@ import fr.uga.l3miage.example.component.ReponseComponent;
 import fr.uga.l3miage.example.exception.rest.NotFoundRestException;
 import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.mapper.ReponseMapper;
-import fr.uga.l3miage.example.models.Miahoot;
 import fr.uga.l3miage.example.models.Question;
 import fr.uga.l3miage.example.models.Reponse;
-import fr.uga.l3miage.example.request.CreateReponseRequest;
 import fr.uga.l3miage.example.response.ReponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,9 +25,9 @@ public class ReponseService {
     private final QuestionComponent questionComponent;
     private final ReponseMapper reponseMapper;
 
-    public void createReponse(final Long questionId, final CreateReponseRequest createReponseRequest) {
-        Reponse newReponseEntity = reponseMapper.toEntity(createReponseRequest);
-        reponseComponent.createReponse(newReponseEntity);
+    public void createReponse(final String label, Long questionId) {
+        Reponse newReponseEntity = reponseMapper.toEntity(label);
+        reponseComponent.create(newReponseEntity);
         bind(questionId, newReponseEntity);
     }
 
@@ -37,6 +35,22 @@ public class ReponseService {
         return reponseComponent.findAll().stream().map(reponseMapper::toDto).collect(Collectors.toList());
     }
 
+    public List<ReponseDTO> findAllByQuestionId(Long questionId){
+        try{
+            return reponseComponent.findAllByQuestionId(questionId).stream().map(reponseMapper::toDto).collect(Collectors.toList());
+        } catch(NotFoundException ex){
+            throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), questionId, ex);
+        }
+    }
+
+
+    public ReponseDTO findById(Long id) {
+        try {
+            return reponseMapper.toDto(reponseComponent.findById(id));
+        } catch (NotFoundException ex) {
+            throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()),id,ex);
+        }
+    }
 
     private void bind(Long questionId, Reponse reponse){
         try{
@@ -47,5 +61,7 @@ public class ReponseService {
             throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), questionId, ex);
         }
     }
+
+
 
 }

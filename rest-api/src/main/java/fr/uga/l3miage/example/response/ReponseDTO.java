@@ -12,7 +12,7 @@ public class ReponseDTO {
     @Schema(description = "correspond au label du reponse",example = "vrai")
     String label;
 
-    @Schema(description = "correspond au valeur de validation du reponse",example = "true")
+    @Schema(description = "correspond au valeur de la reponse s'elle est valide ou non",example = "true")
     boolean estValide;
 
     @Schema(description = "correspond à l'id de la question de la réponse possible", example="1")
