@@ -64,4 +64,5 @@ public interface ReponseEndPoint {
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PatchMapping("reponse/{id}")
     void updateReponse(@PathVariable final Long id,@RequestBody final ReponseDTO reponseDTO);
+
 }
