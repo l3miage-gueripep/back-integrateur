@@ -52,8 +52,7 @@ public interface QuestionEndpoint {
 
     @Operation(description = "Suppression d'une entité Question en bd")
     @ApiResponse(responseCode = "200", description = "La question a bien été supprimée")
-    @ApiResponse(responseCode = "418", description = "Renvoie une erreur 418 si l'entité n'a pu être supprimée",
-            content = @Content(schema = @Schema(implementation = TestEntityNotDeletedErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
+    @ApiResponse(responseCode = "418", description = "Renvoie une erreur 418 si l'entité n'a pu être supprimée")
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("question/{id}")
     void deleteQuestion(@PathVariable Long id);
@@ -62,10 +61,8 @@ public interface QuestionEndpoint {
     @ApiResponse(responseCode = "202", description = "L'entité question à bien été mis à jour")
     @ApiResponse(responseCode = "404", description = "Renvoie une erreur 404 si l'entité n'est pas trouvée",
             content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
-    @Error400Custom
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PatchMapping("question/{id}")
     void updateQuestion(@PathVariable final Long id,@RequestBody final QuestionDTO questionDTO);
-
 
 }
