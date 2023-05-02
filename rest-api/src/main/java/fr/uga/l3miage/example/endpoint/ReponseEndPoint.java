@@ -1,6 +1,7 @@
 package fr.uga.l3miage.example.endpoint;
 
 
+import fr.uga.l3miage.example.error.NotFoundErrorResponse;
 import fr.uga.l3miage.example.error.TestEntityNotDeletedErrorResponse;
 import fr.uga.l3miage.example.request.CreateReponseRequest;
 import fr.uga.l3miage.example.response.QuestionDTO;
@@ -55,4 +56,12 @@ public interface ReponseEndPoint {
     @GetMapping("reponse/{reponseId}")
     ReponseDTO findById(@PathVariable Long id);
 
+
+    @Operation(description = "Mise à jour d'une entité réponse")
+    @ApiResponse(responseCode = "202", description = "L'entité réponse à bien été mis à jour")
+    @ApiResponse(responseCode = "404", description = "Renvoie une erreur 404 si l'entité n'est pas trouvée",
+            content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PatchMapping("reponse/{id}")
+    void updateReponse(@PathVariable final Long id,@RequestBody final ReponseDTO reponseDTO);
 }

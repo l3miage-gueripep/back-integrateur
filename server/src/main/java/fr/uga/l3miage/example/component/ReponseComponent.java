@@ -5,6 +5,7 @@ import fr.uga.l3miage.example.mapper.ReponseMapper;
 import fr.uga.l3miage.example.models.Question;
 import fr.uga.l3miage.example.models.Reponse;
 import fr.uga.l3miage.example.repository.ReponseRepository;
+import fr.uga.l3miage.example.response.ReponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -41,5 +42,13 @@ public class ReponseComponent {
     public Reponse findById(Long id) throws NotFoundException {
         return reponseRepository.findById(id).orElseThrow(() -> new NotFoundException(String.format("Aucune réponse n'a été trouvée pour l'id [%d]", id), id));
     }
+
+     public void updateReponse(final Long id, final ReponseDTO reponseDTO) throws  NotFoundException {
+        Reponse actualReponse = reponseRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(String.format("Aucune entité n'a été trouvée pour l'id [%s]",id), id));
+        reponseMapper.mergeReponse(actualReponse, reponseDTO);
+        reponseRepository.save(actualReponse);
+    }
+
 
 }

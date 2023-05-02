@@ -81,7 +81,7 @@ public class QuestionService {
         try {
             questionComponent.updateQuestion(id,questionDTO);
         } catch (NotFoundException e) {
-            throw new NotFoundRestException(String.format("Impossible de supprimer l'entité. Raison : [%s]", e.getMessage()), id, e);
+            throw new NotFoundRestException(String.format("Impossible de modifier l'entité. Raison : [%s]", e.getMessage()), id, e);
         }
     }
 

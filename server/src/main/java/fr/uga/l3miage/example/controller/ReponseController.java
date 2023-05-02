@@ -38,4 +38,9 @@ public class ReponseController implements ReponseEndPoint {
         return reponseService.findById(reponseId);
     }
 
+    @Override
+    public void updateReponse(Long id, ReponseDTO reponseDTO) {
+        reponseService.update(id,reponseDTO);
+    }
+
 }

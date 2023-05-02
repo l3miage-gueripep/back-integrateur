@@ -71,6 +71,14 @@ public class ReponseService {
         }
     }
 
+    public void update(Long id, ReponseDTO reponseDTO) {
+        try {
+            reponseComponent.updateReponse(id,reponseDTO);
+        } catch (NotFoundException e) {
+            throw new NotFoundRestException(String.format("Impossible de modifier l'entité. Raison : [%s]", e.getMessage()), id, e);
+        }
+    }
+
 
 
 }
