@@ -1,6 +1,8 @@
 package fr.uga.l3miage.example.endpoint;
 
 
+import fr.uga.l3miage.example.annotations.Error400Custom;
+import fr.uga.l3miage.example.error.NotFoundErrorResponse;
 import fr.uga.l3miage.example.error.TestEntityNotDeletedErrorResponse;
 import fr.uga.l3miage.example.request.CreateQuestionRequest;
 import fr.uga.l3miage.example.response.MiahootDTO;
@@ -55,5 +57,15 @@ public interface QuestionEndpoint {
     @ResponseStatus(HttpStatus.OK)
     @DeleteMapping("question/{id}")
     void deleteQuestion(@PathVariable Long id);
+
+    @Operation(description = "Mise à jour d'une entité question")
+    @ApiResponse(responseCode = "202", description = "L'entité question à bien été mis à jour")
+    @ApiResponse(responseCode = "404", description = "Renvoie une erreur 404 si l'entité n'est pas trouvée",
+            content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
+    @Error400Custom
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PatchMapping("question/{id}")
+    void updateQuestion(@PathVariable final Long id,@RequestBody final QuestionDTO questionDTO);
+
 
 }
