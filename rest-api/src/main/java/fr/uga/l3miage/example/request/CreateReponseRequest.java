@@ -14,6 +14,6 @@ public class CreateReponseRequest {
     @Schema(description = "label de l'objet reponse", example = "label reponse")
     private String label;
 
-    @Schema(description = "valeur de vérité de l'objet reponse", example = "false")
+    @Schema(description = "valeur de validité de l'objet reponse", example = "false")
     private boolean estValide;
 }

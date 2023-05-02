@@ -13,4 +13,5 @@ public interface ReponseMapper{
     ReponseDTO toDto(Reponse entity);
 
     Reponse toEntity(CreateReponseRequest request);
+
 }
