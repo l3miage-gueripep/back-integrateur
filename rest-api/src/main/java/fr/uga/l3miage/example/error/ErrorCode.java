@@ -7,6 +7,7 @@ package fr.uga.l3miage.example.error;
  */
 public enum ErrorCode {
     TEST_INT_IS_ZERO_ERROR,
+    TOO_MANY_TRUE_ANSWERS,
     IS_NOT_TEST_ERROR,
     TEST_IS_NOT_FOUND,
     DESCRIPTION_ALREADY_USE_ERROR,
