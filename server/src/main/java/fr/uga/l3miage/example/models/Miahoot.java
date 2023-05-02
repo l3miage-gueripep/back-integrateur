@@ -20,7 +20,7 @@ public class Miahoot {
 
     String description;
 
-    @OneToMany
+    @OneToMany(mappedBy = "miahoot", cascade = CascadeType.ALL) //supprime toutes les questions du miahoot lorsqu'une est supprimée
     List<Question> questions;
 
     public void addQuestion(Question question){
