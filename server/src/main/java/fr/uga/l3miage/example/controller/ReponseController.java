@@ -5,10 +5,8 @@ import fr.uga.l3miage.example.request.CreateReponseRequest;
 import fr.uga.l3miage.example.response.ReponseDTO;
 import fr.uga.l3miage.example.service.ReponseService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,4 +23,19 @@ public class ReponseController implements ReponseEndPoint {
     public List<ReponseDTO> getAll() {
         return reponseService.findAll();
     }
+
+    @Override
+    public void deleteReponse(Long id) {
+        reponseService.deleteById(id);
+    }
+
+    public List<ReponseDTO> findAllByQuestionId(Long questionId) {
+        return reponseService.findAllByQuestionId(questionId);
+    }
+
+    @Override
+    public ReponseDTO findById(Long reponseId) {
+        return reponseService.findById(reponseId);
+    }
+
 }
