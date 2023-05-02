@@ -9,15 +9,12 @@ import javax.persistence.Entity;
 @Entity
 @Getter
 @Setter
-public abstract class Concepteur extends Utilisateur {
-
-    public Concepteur() {
-    }
+public class Concepteur extends Utilisateur {
 
     public Concepteur(Long userId, String userName, String login) {
-        super(userId,userName,login);
-    }
+        super(userId, userName, login);
 
+    }
 }
 
 
