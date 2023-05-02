@@ -47,5 +47,12 @@ public class MiahootService {
         miahootComponent.deleteById(id);
     }
 
+    public void update(final Long id, final MiahootDTO miahootDTO) {
+        try {
+            miahootComponent.updateMiahoot(id,miahootDTO);
+        } catch (NotFoundException e) {
+            throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", e.getMessage()), id, e);
+        }
+    }
 
 }
