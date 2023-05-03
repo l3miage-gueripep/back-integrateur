@@ -2,12 +2,14 @@ package fr.uga.l3miage.example.service;
 
 import fr.uga.l3miage.example.component.ReponseComponent;
 import fr.uga.l3miage.example.component.UtilisateurComponent;
+import fr.uga.l3miage.example.exception.rest.FirebaseIdAlreadyExistsRestException;
 import fr.uga.l3miage.example.exception.rest.NotFoundByStringRestException;
 import fr.uga.l3miage.example.exception.rest.NotFoundRestException;
+import fr.uga.l3miage.example.exception.technical.DescriptionAlreadyExistException;
+import fr.uga.l3miage.example.exception.technical.FirebaseIdAlreadyExistsException;
 import fr.uga.l3miage.example.exception.technical.NotFoundByStringException;
 import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.mapper.UtilisateurMapper;
-import fr.uga.l3miage.example.models.Question;
 import fr.uga.l3miage.example.models.Reponse;
 import fr.uga.l3miage.example.models.Utilisateur;
 import fr.uga.l3miage.example.request.CreateUtilisateurRequest;
@@ -29,9 +31,14 @@ public class UtilisateurService {
     private final ReponseComponent reponseComponent;
     private final UtilisateurMapper utilisateurMapper;
 
-    public void createUtilisateur(final CreateUtilisateurRequest createUtilisateurRequest) {
+    public void createUtilisateur(final CreateUtilisateurRequest createUtilisateurRequest){
         Utilisateur newUtilisateurEntity = utilisateurMapper.toEntity(createUtilisateurRequest);
-        utilisateurComponent.create(newUtilisateurEntity);
+        try {
+            utilisateurComponent.create(newUtilisateurEntity);
+        } catch (FirebaseIdAlreadyExistsException e) {
+            throw new FirebaseIdAlreadyExistsRestException(ERROR_DETECTED,newUtilisateurEntity.getFirebaseId(),e);
+        }
+
     }
 
     public List<UtilisateurDTO> findAll(){

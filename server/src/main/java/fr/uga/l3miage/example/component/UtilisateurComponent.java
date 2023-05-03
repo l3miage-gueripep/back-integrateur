@@ -30,7 +30,9 @@ public class UtilisateurComponent {
     private final UtilisateurMapper utilisateurMapper;
     private final ReponseRepository reponseRepository;
 
-    public void create(final Utilisateur utilisateur){
+    public void create(final Utilisateur utilisateur) throws FirebaseIdAlreadyExistsException {
+        if(utilisateurRepository.findByFirebaseId(utilisateur.getFirebaseId()).isPresent()) {
+            throw new FirebaseIdAlreadyExistsException(String.format("L'id firebase %s existe déjà en BD.", utilisateur.getFirebaseId()), utilisateur.getFirebaseId());        }
         utilisateurRepository.save(utilisateur);
     }
 
