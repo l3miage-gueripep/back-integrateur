@@ -1,5 +1,6 @@
 package fr.uga.l3miage.example.repository;
 
+import fr.uga.l3miage.example.models.Miahoot;
 import fr.uga.l3miage.example.models.Reponse;
 import fr.uga.l3miage.example.models.Utilisateur;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,4 +16,5 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur,Long> {
     Optional<Utilisateur> findById(Long Id);
     Optional<Utilisateur> findByFirebaseId(String firebaseId);
     List<Utilisateur> findByReponsesContaining(Reponse reponse);
+    List<Utilisateur> findByMiahootsParticipes(Miahoot miahoot);
 }

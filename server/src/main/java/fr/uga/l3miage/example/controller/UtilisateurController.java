@@ -46,8 +46,18 @@ public class UtilisateurController implements UtilisateurEndpoint {
     }
 
     @Override
+    public void joinMiahoot(Long miahootId, String userFireBaseId) {
+        utilisateurService.joinMiahoot(miahootId,userFireBaseId);
+    }
+
+    @Override
     public List<UtilisateurDTO> findAllByReponseId(Long reponseId) {
         return utilisateurService.findAllByReponseId(reponseId);
+    }
+
+    @Override
+    public List<UtilisateurDTO> findAllByMiahootParticipes(Long miahootId) {
+        return utilisateurService.findAllByMiahootParticipte(miahootId);
     }
 
 

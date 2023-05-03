@@ -25,6 +25,7 @@ import java.util.Optional;
 public class UtilisateurComponent {
     private final UtilisateurRepository utilisateurRepository;
     private final ReponseComponent reponseComponent;
+    private final MiahootComponent miahootComponent;
     private final UtilisateurMapper utilisateurMapper;
     private final ReponseRepository reponseRepository;
 
@@ -66,6 +67,11 @@ public class UtilisateurComponent {
     public List<Utilisateur> findAllByReponseId(Long reponseId) throws NotFoundException {
         Reponse reponse = reponseComponent.findById(reponseId);
         return utilisateurRepository.findByReponsesContaining(reponse);
+    }
+
+    public List<Utilisateur> findAllByMiahootParticipes(Long miahootId) throws NotFoundException {
+        Miahoot miahoot = miahootComponent.findById(miahootId);
+        return utilisateurRepository.findByMiahootsParticipes(miahoot);
     }
 
 //    public void submitReponse(Long reponseId, String userFirebaseId) throws NotFoundException{
