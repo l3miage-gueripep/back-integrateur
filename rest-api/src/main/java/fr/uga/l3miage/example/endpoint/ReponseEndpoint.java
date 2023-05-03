@@ -4,7 +4,6 @@ package fr.uga.l3miage.example.endpoint;
 import fr.uga.l3miage.example.error.NotFoundErrorResponse;
 import fr.uga.l3miage.example.error.TestEntityNotDeletedErrorResponse;
 import fr.uga.l3miage.example.request.CreateReponseRequest;
-import fr.uga.l3miage.example.response.QuestionDTO;
 import fr.uga.l3miage.example.response.ReponseDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -22,7 +21,7 @@ import java.util.List;
 @CrossOrigin
 @RestController
 @RequestMapping
-public interface ReponseEndPoint {
+public interface ReponseEndpoint {
     @Operation(description = "Création d'une entité Reponse") //swagger
     @ApiResponse(responseCode = "201", description = "L'entité Reponse a bien été créée.") //swagger
     @ResponseStatus(HttpStatus.CREATED)
