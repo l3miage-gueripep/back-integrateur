@@ -49,7 +49,7 @@ public interface ReponseEndpoint {
     @GetMapping("question/{questionId}/reponses")
     List<ReponseDTO> findAllByQuestionId(@PathVariable final Long questionId);
 
-    @Operation(description = "Affiche la question correspondant à l'id donné")
+    @Operation(description = "Affiche la reponse correspondant à l'id donné")
     @ApiResponse(responseCode = "200", description = "Entité réponse trouvée")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("reponse/{reponseId}")
@@ -64,4 +64,9 @@ public interface ReponseEndpoint {
     @PatchMapping("reponse/{id}")
     void updateReponse(@PathVariable final Long id,@RequestBody final ReponseDTO reponseDTO);
 
+    @Operation(description = "Affiche les reponses choisies par un utilisateur sur un miahoot donné")
+    @ApiResponse(responseCode = "200", description = "Entités réponse trouvées")
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("miahoot/{miahootId}/reponses/{userFirebaseId}")
+    List<ReponseDTO> getUtilisateurReponsesByMiahoot(@PathVariable Long miahootId, @PathVariable String userFirebaseId);
 }
