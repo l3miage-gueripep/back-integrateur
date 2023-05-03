@@ -13,6 +13,7 @@ import fr.uga.l3miage.example.mapper.UtilisateurMapper;
 import fr.uga.l3miage.example.models.Reponse;
 import fr.uga.l3miage.example.models.Utilisateur;
 import fr.uga.l3miage.example.request.CreateUtilisateurRequest;
+import fr.uga.l3miage.example.response.QuestionDTO;
 import fr.uga.l3miage.example.response.UtilisateurDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -71,6 +72,14 @@ public class UtilisateurService {
             bind(reponseId,utilisateur);
         } catch (NotFoundByStringException e){
             throw new NotFoundByStringRestException(String.format("Impossible de charger l'entité. Raison : [%s]", e.getMessage()), userFirebaseId, e);
+        }
+    }
+
+    public List<UtilisateurDTO> findAllByReponseId(Long reponseId){
+        try{
+            return utilisateurComponent.findAllByReponseId(reponseId).stream().map(utilisateurMapper::toDto).collect(Collectors.toList());
+        } catch(NotFoundException ex){
+            throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), reponseId, ex);
         }
     }
 
