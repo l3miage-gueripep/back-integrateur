@@ -6,7 +6,6 @@ import fr.uga.l3miage.example.component.UtilisateurComponent;
 import fr.uga.l3miage.example.exception.rest.FirebaseIdAlreadyExistsRestException;
 import fr.uga.l3miage.example.exception.rest.NotFoundByStringRestException;
 import fr.uga.l3miage.example.exception.rest.NotFoundRestException;
-import fr.uga.l3miage.example.exception.technical.DescriptionAlreadyExistException;
 import fr.uga.l3miage.example.exception.technical.FirebaseIdAlreadyExistsException;
 import fr.uga.l3miage.example.exception.technical.NotFoundByStringException;
 import fr.uga.l3miage.example.exception.technical.NotFoundException;
@@ -15,13 +14,11 @@ import fr.uga.l3miage.example.models.Miahoot;
 import fr.uga.l3miage.example.models.Reponse;
 import fr.uga.l3miage.example.models.Utilisateur;
 import fr.uga.l3miage.example.request.CreateUtilisateurRequest;
-import fr.uga.l3miage.example.response.QuestionDTO;
 import fr.uga.l3miage.example.response.UtilisateurDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -79,13 +76,14 @@ public class UtilisateurService {
         }
     }
 
-    public void joinMiahoot(Long miahootId, String userFirebaseId) {
-        try {
-            Utilisateur utilisateur = utilisateurComponent.findByFirebaseId(userFirebaseId);
-            bindMiahoot(miahootId,utilisateur);
-        } catch (NotFoundByStringException e) {
-            throw new NotFoundByStringRestException(String.format("Impossible de charger l'entité. Raison : [%s]", e.getMessage()), userFirebaseId, e);
-        }
+    public void joinMiahootParticipant(Long miahootId, String userFirebaseId) {
+        bindMiahoot(miahootId, userFirebaseId, "participant");
+    }
+    public void joinMiahootPresentateur(Long miahootId, String userFirebaseId) {
+        bindMiahoot(miahootId, userFirebaseId, "presentateur");
+    }
+    public void joinMiahootConcepteur(Long miahootId, String userFirebaseId) {
+        bindMiahoot(miahootId, userFirebaseId, "concepteur");
     }
 
     public List<UtilisateurDTO> findAllByReponseId(Long reponseId){
@@ -106,6 +104,41 @@ public class UtilisateurService {
 
     }
 
+    public List<UtilisateurDTO> findParticipantsByMiahoot(Long miahootId) {
+        return findUtilisateursByMiahoot(miahootId, "participant");
+    }
+
+    public List<UtilisateurDTO> findPresentateursByMiahoot(Long miahootId) {
+        return findUtilisateursByMiahoot(miahootId, "presentateur");
+    }
+
+    public List<UtilisateurDTO> findConcepteursByMiahoot(Long miahootId) {
+        return findUtilisateursByMiahoot(miahootId, "concepteur");
+    }
+
+    private List<UtilisateurDTO> findUtilisateursByMiahoot(Long miahootId, String role){
+        try{
+            Miahoot miahoot = miahootComponent.findById(miahootId);
+            List<Utilisateur> userList;
+            switch (role) {
+                case "participant":
+                    userList = miahoot.getParticipants();
+                    break;
+                case "presentateur":
+                    userList = miahoot.getPresentateurs();
+                    break;
+                case "concepteur":
+                    userList = miahoot.getConcepteurs();
+                    break;
+                default:
+                    throw new IllegalArgumentException("Invalid role");
+            }
+            return userList.stream().map(utilisateurMapper::toDto).collect(Collectors.toList());
+        } catch(NotFoundException ex){
+            throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), miahootId, ex);
+        }
+    }
+
     //executé lorsqu'un utilisateur choisit une reponse comme etant la bonne
     private void bindReponse(Long reponseId, Utilisateur utilisateur){
         try{
@@ -117,19 +150,30 @@ public class UtilisateurService {
         }
     }
 
-    private void bindMiahoot(Long miahootId, Utilisateur utilisateur) {
+    private void bindMiahoot(Long miahootId, String userFirebaseId, String role) {
         try {
-
-            List participants = new ArrayList<Utilisateur>();
-            participants.add(utilisateur);
-            List miahootsParticipes = new ArrayList<Miahoot>();
-
+            Utilisateur utilisateur = utilisateurComponent.findByFirebaseId(userFirebaseId);
             Miahoot miahoot = miahootComponent.findById(miahootId);
-            miahootsParticipes.add(miahoot);
-            utilisateur.setMiahootsParticipes(miahootsParticipes);
-            miahoot.setParticipants(participants);
+            switch (role) {
+                case "participant":
+                    utilisateur.addMiahootParticipe(miahoot);
+                    miahoot.addParticipant(utilisateur);
+                    break;
+                case "presentateur":
+                    utilisateur.addMiahootPresente(miahoot);
+                    miahoot.addPresentateur(utilisateur);
+                    break;
+                case "concepteur":
+                    utilisateur.addMiahootConcu(miahoot);
+                    miahoot.addConcepteur(utilisateur);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Invalid role");
+            }
         } catch (NotFoundException e) {
             throw new NotFoundRestException(String.format("Impossible de charger la réponse. Raison : [%s]", e.getMessage()), miahootId, e);
+        } catch (NotFoundByStringException e) {
+            throw new NotFoundByStringRestException(String.format("Impossible de charger l'entité. Raison : [%s]", e.getMessage()), userFirebaseId, e);
         }
     }
 }

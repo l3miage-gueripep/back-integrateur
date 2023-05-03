@@ -38,6 +38,18 @@ public class Utilisateur {
         this.reponses.add(reponse);
     }
 
+    public void addMiahootConcu(Miahoot miahoot){
+        this.miahootsConcus.add(miahoot);
+    }
+
+    public void addMiahootPresente(Miahoot miahoot){
+        this.miahootsPresentes.add(miahoot);
+    }
+
+    public void addMiahootParticipe(Miahoot miahoot){
+        this.miahootsParticipes.add(miahoot);
+    }
+
     public Utilisateur() {
     }
 

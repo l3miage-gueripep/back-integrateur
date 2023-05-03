@@ -2,6 +2,7 @@ package fr.uga.l3miage.example.controller;
 
 import fr.uga.l3miage.example.endpoint.UtilisateurEndpoint;
 import fr.uga.l3miage.example.request.CreateUtilisateurRequest;
+import fr.uga.l3miage.example.response.MiahootDTO;
 import fr.uga.l3miage.example.response.UtilisateurDTO;
 import fr.uga.l3miage.example.service.UtilisateurService;
 import lombok.RequiredArgsConstructor;
@@ -46,8 +47,18 @@ public class UtilisateurController implements UtilisateurEndpoint {
     }
 
     @Override
-    public void joinMiahoot(Long miahootId, String userFireBaseId) {
-        utilisateurService.joinMiahoot(miahootId,userFireBaseId);
+    public void joinMiahootParticipant(Long miahootId, String userFirebaseId) {
+        utilisateurService.joinMiahootParticipant(miahootId, userFirebaseId);
+    }
+
+    @Override
+    public void joinMiahootPresentateur(Long miahootId, String userFirebaseId) {
+        utilisateurService.joinMiahootPresentateur(miahootId, userFirebaseId);
+    }
+
+    @Override
+    public void joinMiahootConcepteur(Long miahootId, String userFirebaseId) {
+        utilisateurService.joinMiahootConcepteur(miahootId, userFirebaseId);
     }
 
     @Override
@@ -60,7 +71,20 @@ public class UtilisateurController implements UtilisateurEndpoint {
         return utilisateurService.findAllByMiahootParticipte(miahootId);
     }
 
+    @Override
+    public List<UtilisateurDTO> findParticipantsByMiahoot(Long miahootId) {
+        return utilisateurService.findParticipantsByMiahoot(miahootId);
+    }
 
+    @Override
+    public List<UtilisateurDTO> findPresentateursByMiahoot(Long miahootId) {
+        return utilisateurService.findPresentateursByMiahoot(miahootId);
+    }
+
+    @Override
+    public List<UtilisateurDTO> findConcepteursByMiahoot(Long miahootId) {
+        return utilisateurService.findConcepteursByMiahoot(miahootId);
+    }
 }
 
 

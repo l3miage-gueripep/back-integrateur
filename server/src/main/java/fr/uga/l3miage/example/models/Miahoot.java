@@ -35,4 +35,16 @@ public class Miahoot {
     public void addQuestion(Question question){
         questions.add(question);
     }
+
+    public void addConcepteur(Utilisateur concepteur){
+        this.concepteurs.add(concepteur);
+    }
+
+    public void addPresentateur(Utilisateur presentateur){
+        this.presentateurs.add(presentateur);
+    }
+
+    public void addParticipant(Utilisateur participant){
+        this.participants.add(participant);
+    }
 }

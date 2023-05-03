@@ -65,11 +65,23 @@ public interface UtilisateurEndpoint {
     @PostMapping("reponse/{reponseId}/user/{userFirebaseId}")
     void submitReponse(@PathVariable Long reponseId, @Valid @RequestParam final String userFirebaseId);
 
-    @Operation(description = "Rejoins un miahoot") //swagger
+    @Operation(description = "Rejoins un miahoot en tant que participant") //swagger
     @ApiResponse(responseCode = "200", description = "Le miahoot a bien été rejoint") // swagger
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("miahoot/{miahootId}/user/{userFirebaseId}")
-    void joinMiahoot(@PathVariable Long miahootId, @Valid @RequestParam final String userFireBaseId);
+    @PostMapping("miahoot/{miahootId}/participant/{userFirebaseId}")
+    void joinMiahootParticipant(@PathVariable Long miahootId, @Valid @RequestParam final String userFirebaseId);
+
+    @Operation(description = "Rejoins un miahoot en tant que presentateur") //swagger
+    @ApiResponse(responseCode = "200", description = "Le miahoot a bien été rejoint") // swagger
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("miahoot/{miahootId}/presentateur/{userFirebaseId}")
+    void joinMiahootPresentateur(@PathVariable Long miahootId, @Valid @RequestParam final String userFirebaseId);
+
+    @Operation(description = "Rejoins un miahoot en tant que concepteur") //swagger
+    @ApiResponse(responseCode = "200", description = "Le miahoot a bien été rejoint") // swagger
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("miahoot/{miahootId}/concepteur/{userFirebaseId}")
+    void joinMiahootConcepteur(@PathVariable Long miahootId, @Valid @RequestParam final String userFirebaseId);
 
     @Operation(description = "Affiche les utilisateurs correspondant à la réponse donnée")
     @ApiResponse(responseCode = "200", description = "Entités utilisateurs trouvées")
@@ -83,4 +95,23 @@ public interface UtilisateurEndpoint {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("miahoot/{miahootId}/users")
     List<UtilisateurDTO> findAllByMiahootParticipes(@PathVariable Long miahootId);
+
+    @Operation(description = "Affiche les participants correspondant au miahoot donné")
+    @ApiResponse(responseCode = "200", description = "Miahoot trouvé")
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("miahoot/{miahootId}/participants")
+    List<UtilisateurDTO> findParticipantsByMiahoot(@PathVariable Long miahootId);
+
+    @Operation(description = "Affiche les presentateurs correspondant au miahoot donné")
+    @ApiResponse(responseCode = "200", description = "Miahoot trouvé")
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("miahoot/{miahootId}/presentateurs")
+    List<UtilisateurDTO> findPresentateursByMiahoot(@PathVariable Long miahootId);
+
+
+    @Operation(description = "Affiche les concepteurs correspondant au miahoot donné")
+    @ApiResponse(responseCode = "200", description = "Miahoot trouvé")
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("miahoot/{miahootId}/concepteurs")
+    List<UtilisateurDTO> findConcepteursByMiahoot(@PathVariable Long miahootId);
 }

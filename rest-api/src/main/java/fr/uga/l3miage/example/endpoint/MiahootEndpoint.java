@@ -59,4 +59,6 @@ public interface MiahootEndpoint {
     @PatchMapping("{id}")
     void updateMiahoot(@PathVariable final Long id,@RequestBody final MiahootDTO miahootDTO);
 
+
+
 }
