@@ -25,10 +25,13 @@ import java.util.Optional;
 public class UtilisateurComponent {
     private final UtilisateurRepository utilisateurRepository;
     private final ReponseComponent reponseComponent;
+    private final MiahootComponent miahootComponent;
     private final UtilisateurMapper utilisateurMapper;
     private final ReponseRepository reponseRepository;
 
-    public void create(final Utilisateur utilisateur){
+    public void create(final Utilisateur utilisateur) throws FirebaseIdAlreadyExistsException {
+        if(utilisateurRepository.findByFirebaseId(utilisateur.getFirebaseId()).isPresent()) {
+            throw new FirebaseIdAlreadyExistsException(String.format("L'id firebase %s existe déjà en BD.", utilisateur.getFirebaseId()), utilisateur.getFirebaseId());        }
         utilisateurRepository.save(utilisateur);
     }
 
@@ -65,4 +68,12 @@ public class UtilisateurComponent {
         Reponse reponse = reponseComponent.findById(reponseId);
         return utilisateurRepository.findByReponsesContaining(reponse);
     }
+
+
+    public List<Utilisateur> findAllByMiahootParticipes(Long miahootId) throws NotFoundException {
+        Miahoot miahoot = miahootComponent.findById(miahootId);
+        return utilisateurRepository.findByMiahootsParticipes(miahoot);
+    }
+
+
 }

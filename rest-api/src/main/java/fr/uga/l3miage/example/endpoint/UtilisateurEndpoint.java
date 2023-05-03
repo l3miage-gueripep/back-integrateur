@@ -65,9 +65,22 @@ public interface UtilisateurEndpoint {
     @PostMapping("reponse/{reponseId}/user/{userFirebaseId}")
     void submitReponse(@PathVariable Long reponseId, @Valid @RequestParam final String userFirebaseId);
 
+    @Operation(description = "Rejoins un miahoot") //swagger
+    @ApiResponse(responseCode = "200", description = "Le miahoot a bien été rejoint") // swagger
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("miahoot/{miahootId}/user/{userFirebaseId}")
+    void joinMiahoot(@PathVariable Long miahootId, @Valid @RequestParam final String userFireBaseId);
+
     @Operation(description = "Affiche les utilisateurs correspondant à la réponse donnée")
     @ApiResponse(responseCode = "200", description = "Entités utilisateurs trouvées")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("reponse/{reponseId}/users")
     List<UtilisateurDTO> findAllByReponseId(@PathVariable Long reponseId);
+
+
+    @Operation(description = "Affiche les utilisateurs qui ont participé au miahoot donné") //swagger
+    @ApiResponse(responseCode = "200", description = "Entité utilisateurs trouvés")//swagger
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("miahoot/{miahootId}/users")
+    List<UtilisateurDTO> findAllByMiahootParticipes(@PathVariable Long miahootId);
 }

@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import org.springframework.lang.Nullable;
 
+import java.util.List;
+
 @Data
 @Builder
 @Schema(description = "correspond au DTO de l'entité Miahoot")
@@ -19,5 +21,6 @@ public class MiahootDTO {
 
     @Schema(description = "correspond à la description du miahoot",example = "un des meilleurs quizz de la plateforme")
     String description;
+
 
 }
