@@ -28,7 +28,7 @@ public class FirebaseIdAlreadyUseExceptionHandler {
                 .uri(httpServletRequest.getRequestURI())
                 .httpStatus(ex.getHttpStatus())
                 .errorCode(ex.getErrorCode())
-                .errorMessage(ex.getMessage())
+                .errorMessage("Cet id d'utilisateur firebase :" + ex.getFirebaseId() +  " existe déjà ")
                 .fireBaseId(ex.getFirebaseId())
                 .build();
         log.warn(ex.getMessage());
