@@ -25,4 +25,8 @@ public class Reponse {
 
     @ManyToMany
     private List<Utilisateur> utilisateurs;
+
+    public void addUtilisateur(Utilisateur utilisateur){
+        this.utilisateurs.add(utilisateur);
+    }
 }

@@ -4,16 +4,15 @@ import fr.uga.l3miage.example.error.MiahootNotFoundErrorResponse;
 
 import fr.uga.l3miage.example.exception.rest.NotFoundRestException;
 
-import fr.uga.l3miage.example.exception.technical.DescriptionAlreadyExistException;
-import fr.uga.l3miage.example.exception.technical.IsNotTestException;
-import fr.uga.l3miage.example.exception.technical.NotFoundException;
-import fr.uga.l3miage.example.exception.technical.TestEntityNotFoundException;
+import fr.uga.l3miage.example.exception.technical.*;
 import fr.uga.l3miage.example.mapper.MiahootMapper;
 import fr.uga.l3miage.example.mapper.UtilisateurMapper;
 import fr.uga.l3miage.example.models.Miahoot;
+import fr.uga.l3miage.example.models.Reponse;
 import fr.uga.l3miage.example.models.TestEntity;
 import fr.uga.l3miage.example.models.Utilisateur;
 import fr.uga.l3miage.example.repository.MiahootRepository;
+import fr.uga.l3miage.example.repository.ReponseRepository;
 import fr.uga.l3miage.example.repository.UtilisateurRepository;
 import fr.uga.l3miage.example.response.MiahootDTO;
 import fr.uga.l3miage.example.response.Test;
@@ -29,6 +28,7 @@ import java.util.Optional;
 public class UtilisateurComponent {
     private final UtilisateurRepository utilisateurRepository;
     private final UtilisateurMapper utilisateurMapper;
+    private final ReponseRepository reponseRepository;
 
     public void create(final Utilisateur utilisateur){
         utilisateurRepository.save(utilisateur);
@@ -40,6 +40,10 @@ public class UtilisateurComponent {
 
     public Utilisateur findById(Long id) throws NotFoundException {
         return utilisateurRepository.findById(id).orElseThrow(() -> new NotFoundException(String.format("Aucun utilisateur n'a été trouvé pour l'id [%d]", id), id));
+    }
+
+    public Utilisateur findByFirebaseId(String firebaseId) throws NotFoundByStringException {
+        return utilisateurRepository.findByFirebaseId(firebaseId).orElseThrow(() -> new NotFoundByStringException(String.format("Aucun utilisateur n'a été trouvé pour l'id firebase [%s]", firebaseId), firebaseId));
     }
 
     public void deleteById(Long id) {
@@ -59,6 +63,7 @@ public class UtilisateurComponent {
         utilisateurRepository.save(actualUtilisateur);
     }
 
-    public void submitReponse(Long reponseId, String userFirebaseId) {
-    }
+//    public void submitReponse(Long reponseId, String userFirebaseId) throws NotFoundException{
+//        Reponse reponse = reponseRepository.findById(reponseId).orElseThrow(() -> new NotFoundException(String.format("Aucune Repone n'a été trouvée pour l'id [%s]",reponseId), reponseId));
+//    }
 }

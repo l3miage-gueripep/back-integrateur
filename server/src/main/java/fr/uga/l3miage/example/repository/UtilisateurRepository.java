@@ -12,4 +12,5 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur,Long> {
     @Override
     List<Utilisateur> findAll();
     Optional<Utilisateur> findById(Long Id);
+    Optional<Utilisateur> findByFirebaseId(String firebaseId);
 }

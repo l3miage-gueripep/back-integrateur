@@ -34,7 +34,9 @@ public class Utilisateur {
     @ManyToMany
     private List<Reponse> reponses;
 
-
+    public void addReponse(Reponse reponse){
+        this.reponses.add(reponse);
+    }
 
     public Utilisateur() {
     }
