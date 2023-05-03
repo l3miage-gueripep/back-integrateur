@@ -65,8 +65,4 @@ public class UtilisateurComponent {
         Reponse reponse = reponseComponent.findById(reponseId);
         return utilisateurRepository.findByReponsesContaining(reponse);
     }
-
-//    public void submitReponse(Long reponseId, String userFirebaseId) throws NotFoundException{
-//        Reponse reponse = reponseRepository.findById(reponseId).orElseThrow(() -> new NotFoundException(String.format("Aucune Repone n'a été trouvée pour l'id [%s]",reponseId), reponseId));
-//    }
 }
