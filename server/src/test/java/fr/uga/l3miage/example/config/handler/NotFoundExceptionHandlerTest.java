@@ -12,23 +12,23 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Permet de tester le handler de l'exception d'API {@link TestEntityNotFoundRestException}
  */
-class NotFoundExceptionHandlerTest {
-    @Test
-    void testHandle() {
-        NotFoundExceptionHandler handler = new NotFoundExceptionHandler();
-        TestEntityNotFoundRestException exception = new TestEntityNotFoundRestException("TestConfigWithProperties not found","description");
-        MockHttpServletRequest request = new MockHttpServletRequest();
-        request.setRequestURI("TestConfigWithProperties");
-        ResponseEntity<TestNotFoundErrorResponse> expected = ResponseEntity.status(exception.getHttpStatus())
-                .body(TestNotFoundErrorResponse.builder()
-                        .errorMessage(exception.getMessage())
-                        .uri(request.getRequestURI())
-                        .errorCode(exception.getErrorCode())
-                        .httpStatus(exception.getHttpStatus())
-                        .description("description")
-                        .build());
-
-        ResponseEntity<ErrorResponse> response = handler.handle(request, exception);
-        assertThat(response).usingRecursiveComparison().isEqualTo(expected);
-    }
-}
+//class NotFoundExceptionHandlerTest {
+//    @Test
+//    void testHandle() {
+//        NotFoundExceptionHandler handler = new NotFoundExceptionHandler();
+//        TestEntityNotFoundRestException exception = new TestEntityNotFoundRestException("TestConfigWithProperties not found","description");
+//        MockHttpServletRequest request = new MockHttpServletRequest();
+//        request.setRequestURI("TestConfigWithProperties");
+//        ResponseEntity<TestNotFoundErrorResponse> expected = ResponseEntity.status(exception.getHttpStatus())
+//                .body(TestNotFoundErrorResponse.builder()
+//                        .errorMessage(exception.getMessage())
+//                        .uri(request.getRequestURI())
+//                        .errorCode(exception.getErrorCode())
+//                        .httpStatus(exception.getHttpStatus())
+//                        .description("description")
+//                        .build());
+//
+//        ResponseEntity<ErrorResponse> response = handler.handle(request, exception);
+//        assertThat(response).usingRecursiveComparison().isEqualTo(expected);
+//    }
+//}

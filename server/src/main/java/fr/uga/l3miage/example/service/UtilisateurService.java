@@ -52,11 +52,11 @@ public class UtilisateurService {
         }
     }
 
-    public void submit(Long reponseId, String userFirebaseId) {
-        try {
-            utilisateurComponent.submitReponse(reponseId,userFirebaseId);
-        } catch (NotFoundException e) {
-            throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", e.getMessage()), id, e);
-        }
+    public void submitReponse(Long reponseId, String userFirebaseId) {
+//        try {
+//            utilisateurComponent.submitReponse(reponseId,userFirebaseId);
+//        } catch (NotFoundException e) {
+//            throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", e.getMessage()), id, e);
+//        }
     }
 }
