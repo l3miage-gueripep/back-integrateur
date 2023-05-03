@@ -45,6 +45,11 @@ public class UtilisateurController implements UtilisateurEndpoint {
         utilisateurService.submitReponse(reponseId,userFirebaseId);
     }
 
+    @Override
+    public List<UtilisateurDTO> findAllByReponseId(Long reponseId) {
+        return utilisateurService.findAllByReponseId(reponseId);
+    }
+
 
 }
 

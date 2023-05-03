@@ -22,25 +22,25 @@ import java.util.List;
 @Tag(name = "Utilisateur tag") //swagger
 @CrossOrigin
 @RestController
-@RequestMapping("utilisateur/")
+@RequestMapping
 public interface UtilisateurEndpoint {
 
     @Operation(description = "Création d'une entité Utilisateur") //swagger
     @ApiResponse(responseCode = "201", description = "L'entité Utilisateur a bien été créée.") //swagger
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
+    @PostMapping("utilisateur/")
     void createEntityUtilisateur(@Valid @RequestBody final CreateUtilisateurRequest request);
 
     @Operation(description = "Affiche tous les Utilisateurs existants")
     @ApiResponse(responseCode = "200", description = "Entités utilisateurs trouvées")
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping
+    @GetMapping("utilisateur/")
     List<UtilisateurDTO> getAll();
 
     @Operation(description = "Affiche l'Utilisateur correspondant à l'id donné")
     @ApiResponse(responseCode = "200", description = "Entité utilisateur trouvée")
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("{id}")
+    @GetMapping("utilisateur/{id}")
     UtilisateurDTO findById(@PathVariable Long id);
 
     @Operation(description = "Suppression d'une entité Utilisateur en bd")
@@ -48,7 +48,7 @@ public interface UtilisateurEndpoint {
     @ApiResponse(responseCode = "418", description = "Renvoie une erreur 418 si l'entité n'a pu être supprimée",
             content = @Content(schema = @Schema(implementation = TestEntityNotDeletedErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ResponseStatus(HttpStatus.OK)
-    @DeleteMapping("{id}")
+    @DeleteMapping("utilisateur/{id}")
     void deleteUtilisateur(@PathVariable Long id);
 
     @Operation(description = "Mise à jour d'une entité utilisateur")
@@ -56,7 +56,7 @@ public interface UtilisateurEndpoint {
     @ApiResponse(responseCode = "404", description = "Renvoie une erreur 404 si l'entité n'est pas trouvée",
             content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ResponseStatus(HttpStatus.ACCEPTED)
-    @PatchMapping("{id}")
+    @PatchMapping("utilisateur/{id}")
     void updateUtilisateur(@PathVariable final Long id,@RequestBody final UtilisateurDTO utilisateurDTO);
 
     @Operation(description = "Vote pour une reponse") //swagger
@@ -64,4 +64,10 @@ public interface UtilisateurEndpoint {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("reponse/{reponseId}/user/{userFirebaseId}")
     void submitReponse(@PathVariable Long reponseId, @Valid @RequestParam final String userFirebaseId);
+
+    @Operation(description = "Affiche les utilisateurs correspondant à la réponse donnée")
+    @ApiResponse(responseCode = "200", description = "Entités utilisateurs trouvées")
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("reponse/{reponseId}/users")
+    List<UtilisateurDTO> findAllByReponseId(@PathVariable Long reponseId);
 }

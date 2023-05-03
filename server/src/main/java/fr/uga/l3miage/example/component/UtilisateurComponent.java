@@ -7,10 +7,7 @@ import fr.uga.l3miage.example.exception.rest.NotFoundRestException;
 import fr.uga.l3miage.example.exception.technical.*;
 import fr.uga.l3miage.example.mapper.MiahootMapper;
 import fr.uga.l3miage.example.mapper.UtilisateurMapper;
-import fr.uga.l3miage.example.models.Miahoot;
-import fr.uga.l3miage.example.models.Reponse;
-import fr.uga.l3miage.example.models.TestEntity;
-import fr.uga.l3miage.example.models.Utilisateur;
+import fr.uga.l3miage.example.models.*;
 import fr.uga.l3miage.example.repository.MiahootRepository;
 import fr.uga.l3miage.example.repository.ReponseRepository;
 import fr.uga.l3miage.example.repository.UtilisateurRepository;
@@ -27,6 +24,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UtilisateurComponent {
     private final UtilisateurRepository utilisateurRepository;
+    private final ReponseComponent reponseComponent;
     private final UtilisateurMapper utilisateurMapper;
     private final ReponseRepository reponseRepository;
 
@@ -61,6 +59,11 @@ public class UtilisateurComponent {
                 .orElseThrow(() -> new NotFoundException(String.format("Aucune entité n'a été trouvée pour l'id [%s]",id), id));
         utilisateurMapper.mergeTestEntity(actualUtilisateur, utilisateurDTO);
         utilisateurRepository.save(actualUtilisateur);
+    }
+
+    public List<Utilisateur> findAllByReponseId(Long reponseId) throws NotFoundException {
+        Reponse reponse = reponseComponent.findById(reponseId);
+        return utilisateurRepository.findByReponsesContaining(reponse);
     }
 
 //    public void submitReponse(Long reponseId, String userFirebaseId) throws NotFoundException{
