@@ -39,7 +39,7 @@ public class Utilisateur {
     public Utilisateur() {
     }
 
-    public Utilisateur(Long userId, String userName, String login) {
+    public Utilisateur(Long userId, String userName, String firebaseId) {
         this.Id = userId;
         this.username = userName;
         this.firebaseId = firebaseId;
