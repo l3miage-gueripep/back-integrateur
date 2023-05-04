@@ -39,6 +39,7 @@ public class MiahootController implements MiahootEndpoint {
 
     @Override
     public void updateMiahoot(Long id, MiahootDTO miahootDTO) {
+
         miahootService.update(id,miahootDTO);
     }
 

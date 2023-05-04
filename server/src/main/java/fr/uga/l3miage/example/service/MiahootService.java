@@ -51,6 +51,11 @@ public class MiahootService {
     }
 
     public void update(final Long id, final MiahootDTO miahootDTO) {
+        // Use the ID from the URL if the ID in the DTO object is different from url
+        Long dtoId = miahootDTO.getId();
+        if (dtoId == null || !dtoId.equals(id)) {
+            miahootDTO.setId(id);
+        }
         try {
             miahootComponent.updateMiahoot(id,miahootDTO);
         } catch (NotFoundException e) {
