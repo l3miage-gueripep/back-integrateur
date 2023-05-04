@@ -62,6 +62,11 @@ public class QuestionComponent {
         questionRepository.save(actualQuestion);
     }
 
-
+    public void updateLabel(final Long id, final String label) throws NotFoundException {
+        Question question = questionRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException(String.format("Aucune entité n'a été trouvée pour l'id [%s]",id), id));
+        question.setLabel(label.replaceAll("\"", ""));
+        questionRepository.save(question);
+    }
 
 }

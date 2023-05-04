@@ -47,4 +47,9 @@ public class QuestionController implements QuestionEndpoint {
     public void updateQuestion(Long id, QuestionDTO questionDTO) {
         questionService.update(id,questionDTO);
     }
+
+    @Override
+    public void updateQuestionLabel(Long id, String label) {
+        questionService.updateLabel(id, label);
+    }
 }

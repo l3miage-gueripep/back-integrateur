@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,8 +31,4 @@ public class Question {
     public void addReponse(Reponse reponse){
         this.reponses.add(reponse);
     }
-
-
-
-
 }

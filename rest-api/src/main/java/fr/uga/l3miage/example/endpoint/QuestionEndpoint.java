@@ -65,4 +65,13 @@ public interface QuestionEndpoint {
     @PatchMapping("question/{id}")
     void updateQuestion(@PathVariable final Long id,@RequestBody final QuestionDTO questionDTO);
 
+    @Operation(description = "Mise à jour du label d'une entité question")
+    @ApiResponse(responseCode = "202", description = "L'entité question à bien été mis à jour")
+    @ApiResponse(responseCode = "404", description = "Renvoie une erreur 404 si l'entité n'est pas trouvée",
+            content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PatchMapping("questionLabel/{id}")
+    void updateQuestionLabel(@PathVariable final Long id, @RequestBody final String label);
+
+
 }
