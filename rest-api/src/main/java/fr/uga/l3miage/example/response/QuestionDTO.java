@@ -24,6 +24,4 @@ public class QuestionDTO {
     @Schema(description = "liste des réponses à la question")
     List<QuestionReponseDTO> reponses;
 
-
-
 }

@@ -22,5 +22,7 @@ public class MiahootDTO {
     @Schema(description = "correspond à la description du miahoot",example = "un des meilleurs quizz de la plateforme")
     String description;
 
+    @Schema(description = "correspond à l'id du miahoot de la question", example="1")
+    String firebaseId;
 
 }
