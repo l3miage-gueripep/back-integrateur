@@ -77,9 +77,10 @@ public class QuestionService {
         }
     }
 
-    public void update(final Long id, final QuestionDTO questionDTO) {
+
+    public void updateLabel(final Long id, final String label) {
         try {
-            questionComponent.updateQuestion(id,questionDTO);
+            questionComponent.updateLabel(id,label);
         } catch (NotFoundException e) {
             throw new NotFoundRestException(String.format("Impossible de modifier l'entité. Raison : [%s]", e.getMessage()), id, e);
         }

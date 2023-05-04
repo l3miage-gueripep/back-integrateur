@@ -21,6 +21,7 @@ public class Reponse {
     private boolean estValide;
 
     @ManyToOne
+    @JoinColumn(name = "question.id")
     private Question question;
 
     @ManyToMany

@@ -57,12 +57,14 @@ public interface QuestionEndpoint {
     @DeleteMapping("question/{id}")
     void deleteQuestion(@PathVariable Long id);
 
-    @Operation(description = "Mise à jour d'une entité question")
+
+    @Operation(description = "Mise à jour du label d'une entité question")
     @ApiResponse(responseCode = "202", description = "L'entité question à bien été mis à jour")
     @ApiResponse(responseCode = "404", description = "Renvoie une erreur 404 si l'entité n'est pas trouvée",
             content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PatchMapping("question/{id}")
-    void updateQuestion(@PathVariable final Long id,@RequestBody final QuestionDTO questionDTO);
+    void updateQuestionLabel(@PathVariable final Long id, @RequestBody final String label);
+
 
 }

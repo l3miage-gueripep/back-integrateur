@@ -55,13 +55,12 @@ public class QuestionComponent {
         questionRepository.deleteById(id);
     }
 
-    public void updateQuestion(final Long id, final QuestionDTO questionDTO) throws  NotFoundException {
-        Question actualQuestion = questionRepository.findById(id)
+
+    public void updateLabel(final Long id, final String label) throws NotFoundException {
+        Question question = questionRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException(String.format("Aucune entité n'a été trouvée pour l'id [%s]",id), id));
-        questionMapper.mergeQuestion(actualQuestion, questionDTO);
-        questionRepository.save(actualQuestion);
+        question.setLabel(label.replaceAll("\"", ""));
+        questionRepository.save(question);
     }
-
-
 
 }
