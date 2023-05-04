@@ -9,6 +9,9 @@ import lombok.Data;
 @Schema(description = "correspond au DTO de l'entité Reponse")
 public class ReponseDTO {
 
+    @Schema(description = "id de la réponse", example = "1")
+    Long id;
+
     @Schema(description = "correspond au label du reponse",example = "vrai")
     String label;
 

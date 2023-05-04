@@ -43,10 +43,7 @@ public class QuestionController implements QuestionEndpoint {
         questionService.deleteById(id);
     }
 
-    @Override
-    public void updateQuestion(Long id, QuestionDTO questionDTO) {
-        questionService.update(id,questionDTO);
-    }
+
 
     @Override
     public void updateQuestionLabel(Long id, String label) {
