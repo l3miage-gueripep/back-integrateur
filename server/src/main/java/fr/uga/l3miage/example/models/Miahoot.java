@@ -21,6 +21,9 @@ public class Miahoot {
 
     String description;
 
+    @OneToMany
+    List<Partie> parties;
+
     @OneToMany(mappedBy = "miahoot", cascade = CascadeType.ALL) //supprime toutes les questions du miahoot lorsqu'une est supprimée
     List<Question> questions;
 
@@ -56,6 +59,7 @@ public class Miahoot {
 
     public Miahoot() {
         // Initialize the list property
+        this.parties = new ArrayList<>();
         this.questions = new ArrayList<>();
         this.participants = new ArrayList<>();
         this.presentateurs = new ArrayList<>();
