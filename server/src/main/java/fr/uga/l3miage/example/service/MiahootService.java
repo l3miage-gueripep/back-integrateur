@@ -26,11 +26,14 @@ public class MiahootService {
     private static final String ERROR_DETECTED = "Une erreur lors de la création de l'entité TestConfigWithProperties à été détecté.";
     private final MiahootComponent miahootComponent;
     private final UtilisateurComponent utilisateurComponent;
+    private final UtilisateurService utilisateurService;
     private final MiahootMapper miahootMapper;
 
     public void createMiahoot(final CreateMiahootRequest createMiahootRequest) {
         Miahoot newMiahootEntity = miahootMapper.toEntity(createMiahootRequest);
         miahootComponent.create(newMiahootEntity);
+        //bind le concepteur correspondant au firebase à id au nouveau miahoot
+        utilisateurService.joinMiahootConcepteur(newMiahootEntity.getId(), createMiahootRequest.getFirebaseId());
     }
 
 
