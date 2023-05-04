@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -52,6 +53,14 @@ public class Miahoot {
         this.concepteurs.add(utilisateur);
     }
 
+
+    public Miahoot() {
+        // Initialize the list property
+        this.questions = new ArrayList<>();
+        this.participants = new ArrayList<>();
+        this.presentateurs = new ArrayList<>();
+        this.concepteurs = new ArrayList<>();
+    }
 
 
 }
