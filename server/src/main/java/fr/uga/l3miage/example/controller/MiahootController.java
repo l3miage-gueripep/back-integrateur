@@ -43,6 +43,21 @@ public class MiahootController implements MiahootEndpoint {
         miahootService.update(id,miahootDTO);
     }
 
+    @Override
+    public List<MiahootDTO> findMiahootsPresentesByUser(String userFirebaseId) {
+        return miahootService.findMiahootPresentesByUser(userFirebaseId);
+    }
+
+    @Override
+    public List<MiahootDTO> findMiahootsConcusByUser(String userFirebaseId) {
+        return miahootService.findMiahootConcusByUser(userFirebaseId);
+    }
+
+    @Override
+    public List<MiahootDTO> findMiahootsParticipesByUser(String userFirebaseId) {
+        return miahootService.findMiahootParticipesByUser(userFirebaseId);
+    }
+
 
 }
 

@@ -66,6 +66,45 @@ public class MiahootService {
         }
     }
 
+    public List<MiahootDTO> findMiahootParticipesByUser(String firebaseId) {
+        return findMiahootByUser(firebaseId,"participé");
+    }
+
+    public List<MiahootDTO> findMiahootConcusByUser(String firebaseId) {
+        return findMiahootByUser(firebaseId,"conçu");
+    }
+
+    public List<MiahootDTO> findMiahootPresentesByUser(String firebaseId) {
+        return findMiahootByUser(firebaseId,"présenté");
+    }
+
+    private List<MiahootDTO> findMiahootByUser(String firebaseId, String statut) {
+        try {
+            Utilisateur user = utilisateurComponent.findByFirebaseId(firebaseId);
+            List<Miahoot> miahootList;
+            switch (statut) {
+                case "présenté":
+                    miahootList = user.getMiahootsPresentes();
+                    break;
+                case "conçu":
+                    miahootList = user.getMiahootsConcus();
+                    break;
+                case "participé":
+                    miahootList = user.getMiahootsParticipes();
+                    break;
+                default:
+                    throw new IllegalArgumentException("Statut du miahoot invalide");
+            }
+            return  miahootList.stream().map(miahootMapper::toDto).collect(Collectors.toList());
+        } catch (NotFoundByStringException e) {
+            throw new NotFoundByStringRestException(String.format("Impossible de charger l'entité. Raison : [%s]", e.getMessage()), firebaseId, e);
+        }
+    }
+
+
+
+
+
     private void bind(String firebaseId, Miahoot miahoot){
         try{
             Utilisateur concepteur = utilisateurComponent.findByFirebaseId(firebaseId);
