@@ -16,5 +16,4 @@ public interface MiahootMapper {
     MiahootDTO toDto(Miahoot entity);
     Miahoot toEntity(CreateMiahootRequest request);
     void mergeTestEntity(@MappingTarget @NonNull Miahoot miahoot, MiahootDTO miahootDTO);
-
 }

@@ -23,24 +23,24 @@ import java.util.List;
 @Tag(name = "Miahoot tag") //swagger
 @CrossOrigin
 @RestController
-@RequestMapping("miahoot/")
 public interface MiahootEndpoint {
+
     @Operation(description = "Création d'une entité Miahoot") //swagger
     @ApiResponse(responseCode = "201", description = "L'entité Miahoot a bien été créée.") //swagger
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping
+    @PostMapping("miahoot/")
     void createEntityMiahoot(@Valid @RequestBody final CreateMiahootRequest request);
 
     @Operation(description = "Affiche tous les Miahoots existants")
     @ApiResponse(responseCode = "200", description = "Entités miahoots trouvées")
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping
+    @GetMapping("miahoot/")
     List<MiahootDTO> getAll();
 
     @Operation(description = "Affiche le Miahoot correspondant à l'id donné")
     @ApiResponse(responseCode = "200", description = "Entité miahoot trouvée")
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("{id}")
+    @GetMapping("miahoot/{id}")
     MiahootDTO findById(@PathVariable Long id);
 
     @Operation(description = "Suppression d'une entité Miahoot en bd")
@@ -48,7 +48,7 @@ public interface MiahootEndpoint {
     @ApiResponse(responseCode = "418", description = "Renvoie une erreur 418 si l'entité n'a pu être supprimée",
             content = @Content(schema = @Schema(implementation = TestEntityNotDeletedErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ResponseStatus(HttpStatus.OK)
-    @DeleteMapping("{id}")
+    @DeleteMapping("miahoot/{id}")
     void deleteMiahoot(@PathVariable Long id);
 
     @Operation(description = "Mise à jour d'une entité miahoot")
@@ -56,7 +56,7 @@ public interface MiahootEndpoint {
     @ApiResponse(responseCode = "404", description = "Renvoie une erreur 404 si l'entité n'est pas trouvée",
             content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ResponseStatus(HttpStatus.ACCEPTED)
-    @PatchMapping("{id}")
+    @PatchMapping("miahoot/{id}")
     void updateMiahoot(@PathVariable final Long id,@RequestBody final MiahootDTO miahootDTO);
 
 

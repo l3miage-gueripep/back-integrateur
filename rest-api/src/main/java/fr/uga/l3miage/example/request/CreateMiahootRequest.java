@@ -14,4 +14,7 @@ public class CreateMiahootRequest {
     private String nom;
     @Schema(description = "description du Miahoot", example = "Un test pour tous les ages")
     private String description;
+    @Schema(description = "concepteur du Miahoot", example = "123x479a456d")
+    private String firebaseId;
+
 }

@@ -26,8 +26,8 @@ public class QuestionComponent {
     private final MiahootComponent miahootComponent;
     private final QuestionMapper questionMapper;
 
-    public void create(final Question entity){
-        questionRepository.save(entity);
+    public void create(final Question question){
+        questionRepository.save(question);
     }
 
     public List<Question> findAll(){
