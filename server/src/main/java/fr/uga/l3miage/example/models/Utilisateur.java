@@ -14,7 +14,7 @@ public class Utilisateur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @Column(nullable = false)
     private String username;
@@ -53,10 +53,12 @@ public class Utilisateur {
     public Utilisateur() {
     }
 
-    public Utilisateur(Long userId, String userName, String firebaseId) {
-        this.Id = userId;
+    public Utilisateur(Long id, String userName, String firebaseId) {
+        this.id = id;
         this.username = userName;
         this.firebaseId = firebaseId;
     }
+
+
 }
 

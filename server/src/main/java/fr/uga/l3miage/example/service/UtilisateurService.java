@@ -150,7 +150,7 @@ public class UtilisateurService {
         }
     }
 
-    private void bindMiahoot(Long miahootId, String userFirebaseId, String role) {
+    public void bindMiahoot(Long miahootId, String userFirebaseId, String role) {
         try {
             Utilisateur utilisateur = utilisateurComponent.findByFirebaseId(userFirebaseId);
             Miahoot miahoot = miahootComponent.findById(miahootId);

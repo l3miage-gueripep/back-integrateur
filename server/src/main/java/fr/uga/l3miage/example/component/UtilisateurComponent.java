@@ -2,6 +2,7 @@ package fr.uga.l3miage.example.component;
 
 import fr.uga.l3miage.example.error.MiahootNotFoundErrorResponse;
 
+import fr.uga.l3miage.example.exception.rest.NotFoundByStringRestException;
 import fr.uga.l3miage.example.exception.rest.NotFoundRestException;
 
 import fr.uga.l3miage.example.exception.technical.*;
@@ -44,7 +45,7 @@ public class UtilisateurComponent {
     }
 
     public Utilisateur findByFirebaseId(String firebaseId) throws NotFoundByStringException {
-        return utilisateurRepository.findByFirebaseId(firebaseId).orElseThrow(() -> new NotFoundByStringException(String.format("Aucun utilisateur n'a été trouvé pour l'id firebase [%s]", firebaseId), firebaseId));
+        return utilisateurRepository.findByFirebaseId(firebaseId).orElseThrow(() -> new NotFoundByStringRestException(String.format("Aucun utilisateur n'a été trouvé pour l'id firebase [%s]", firebaseId), firebaseId));
     }
 
     public void deleteById(Long id) {

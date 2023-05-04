@@ -32,12 +32,12 @@ public class Miahoot {
     @ManyToMany(mappedBy = "miahootsParticipes")
     List<Utilisateur> participants;
 
-    public void addQuestion(Question question){
-        questions.add(question);
+    public void setConcepteurs(List<Utilisateur> concepteurs) {
+        this.concepteurs = concepteurs;
     }
 
-    public void addConcepteur(Utilisateur concepteur){
-        this.concepteurs.add(concepteur);
+    public void addQuestion(Question question){
+        questions.add(question);
     }
 
     public void addPresentateur(Utilisateur presentateur){
@@ -47,4 +47,11 @@ public class Miahoot {
     public void addParticipant(Utilisateur participant){
         this.participants.add(participant);
     }
+
+    public void addConcepteur(Utilisateur utilisateur){
+        this.concepteurs.add(utilisateur);
+    }
+
+
+
 }
