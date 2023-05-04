@@ -59,6 +59,22 @@ public interface MiahootEndpoint {
     @PatchMapping("miahoot/{id}")
     void updateMiahoot(@PathVariable final Long id,@RequestBody final MiahootDTO miahootDTO);
 
+    @Operation(description = "Affiche les miahoots présentés par l'utilisateur donné")
+    @ApiResponse(responseCode = "200", description = "Miahoots trouvés")
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("utilisateur/{userFirebaseId}/miahootsPresentes")
+    List<MiahootDTO> findMiahootsPresentesByUser(@PathVariable String userFirebaseId);
 
+    @Operation(description = "Affiche les miahoots conçus par l'utilisateur donné")
+    @ApiResponse(responseCode = "200", description = "Miahoots trouvés")
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("utilisateur/{userFirebaseId}/miahootsConcus")
+    List<MiahootDTO> findMiahootsConcusByUser(@PathVariable String userFirebaseId);
+
+    @Operation(description = "Affiche les miahoots auxquels l'utilisateur donné a participé")
+    @ApiResponse(responseCode = "200", description = "Miahoots trouvés")
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("utilisateur/{userFirebaseId}/miahootsParticipes")
+    List<MiahootDTO> findMiahootsParticipesByUser(@PathVariable String userFirebaseId);
 
 }
