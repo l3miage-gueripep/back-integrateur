@@ -22,7 +22,7 @@ public class QuestionDTO {
     Long miahootId;
 
     @Schema(description = "liste des réponses à la question")
-    List<ReponseDTO> reponses;
+    List<QuestionReponseDTO> reponses;
 
 
 
