@@ -18,6 +18,8 @@ public class PartieDTO {
 
     Long miahootId;
 
+    Boolean isActive;
+
 
 //    List<SessionDTO> sessions;
 }

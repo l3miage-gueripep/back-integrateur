@@ -18,7 +18,7 @@ public class Partie {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
-    Boolean active;
+    Boolean isActive;
 
     @ManyToOne
     Miahoot miahoot;
@@ -27,7 +27,7 @@ public class Partie {
     List<Session> sessions;
 
     public Partie(){
-        this.active = false;
+        this.isActive = false;
         this.date = new Date();
     }
 
