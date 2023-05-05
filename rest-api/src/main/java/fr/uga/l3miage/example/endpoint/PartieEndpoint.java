@@ -30,7 +30,7 @@ public interface PartieEndpoint {
     @Operation(description = "Visualisation de toutes les entités partie") //swagger
     @ApiResponse(responseCode = "200", description = "Entités bien recherchées.") //swagger
     @ResponseStatus(HttpStatus.OK)
-    @PostMapping("partie/")
+    @GetMapping("partie/")
     List<PartieDTO> getAll();
 
 }

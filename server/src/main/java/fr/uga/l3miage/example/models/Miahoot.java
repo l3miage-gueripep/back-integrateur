@@ -56,6 +56,10 @@ public class Miahoot {
         this.concepteurs.add(utilisateur);
     }
 
+    public void addPartie(Partie partie){
+        this.parties.add(partie);
+    }
+
 
     public Miahoot() {
         // Initialize the list property

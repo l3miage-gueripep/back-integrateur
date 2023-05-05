@@ -15,8 +15,10 @@ public class Partie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date date;
+
+    Boolean active;
 
     @ManyToOne
     Miahoot miahoot;
@@ -24,5 +26,8 @@ public class Partie {
     @OneToMany
     List<Session> sessions;
 
-
+    public Partie(){
+        this.active = false;
+        this.date = new Date();
+    }
 }
