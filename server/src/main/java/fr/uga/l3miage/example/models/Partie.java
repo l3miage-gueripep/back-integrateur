@@ -30,4 +30,8 @@ public class Partie {
         this.active = false;
         this.date = new Date();
     }
+
+    public void addSession(Session session) {
+        this.sessions.add(session);
+    }
 }

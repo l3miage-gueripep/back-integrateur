@@ -1,5 +1,6 @@
 package fr.uga.l3miage.example.component;
 
+import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.models.Miahoot;
 import fr.uga.l3miage.example.models.Partie;
 import fr.uga.l3miage.example.models.Question;
@@ -20,5 +21,9 @@ public class PartieComponent {
 
     public List<Partie> findAll(){
         return partieRepository.findAll();
+    }
+
+    public Partie findById(Long id) throws NotFoundException {
+        return partieRepository.findById(id).orElseThrow(() -> new NotFoundException(String.format("Aucune partie n'a été trouvée pour l'id [%d]", id), id));
     }
 }
