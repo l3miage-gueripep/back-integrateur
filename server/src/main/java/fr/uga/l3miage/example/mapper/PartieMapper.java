@@ -11,6 +11,9 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface PartieMapper {
     @Mapping(source = "miahoot.id", target = "miahootId")
+    @Mapping(source = "isActive", target = "isActive")
     PartieDTO toDto(Partie partie);
+
     Partie toEntity(Long miahootId);
+
 }
