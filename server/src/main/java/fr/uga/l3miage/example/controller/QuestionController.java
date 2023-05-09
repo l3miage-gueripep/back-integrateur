@@ -7,6 +7,7 @@ import fr.uga.l3miage.example.response.QuestionDTO;
 import fr.uga.l3miage.example.service.QuestionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,8 +20,9 @@ public class QuestionController implements QuestionEndpoint {
     private final QuestionService questionService;
 
     @Override
-    public void createEntityQuestion(final Long miahootId, final String label) {
-        questionService.createQuestion(label, miahootId);
+    public ResponseEntity<Long> createEntityQuestion(final Long miahootId, final String label) {
+        ResponseEntity<Long> response = questionService.createQuestion(label, miahootId);
+        return response;
     }
 
     @Override

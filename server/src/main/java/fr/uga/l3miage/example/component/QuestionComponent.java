@@ -15,6 +15,8 @@ import fr.uga.l3miage.example.response.QuestionDTO;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.weaver.ast.Not;
 import org.hibernate.loader.plan.spi.QuerySpaceUidNotRegisteredException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -26,8 +28,12 @@ public class QuestionComponent {
     private final MiahootComponent miahootComponent;
     private final QuestionMapper questionMapper;
 
-    public void create(final Question question){
-        questionRepository.save(question);
+    public ResponseEntity<Long> create(final Question question){
+
+        Question questionCree = questionRepository.save(question);
+        return ResponseEntity.status(HttpStatus.CREATED).body(questionCree.getId());
+
+
     }
 
     public List<Question> findAll(){

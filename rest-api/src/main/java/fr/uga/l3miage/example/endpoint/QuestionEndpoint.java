@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public interface QuestionEndpoint {
     @ApiResponse(responseCode = "201", description = "L'entité Question a bien été créée.") //swagger
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("miahoot/{miahootId}/question")
-    void createEntityQuestion(@PathVariable Long miahootId ,@RequestParam final String label);
+    ResponseEntity<Long> createEntityQuestion(@PathVariable Long miahootId , @RequestParam final String label);
 
 
     @Operation(description = "Affiche toutes les questions existantes")

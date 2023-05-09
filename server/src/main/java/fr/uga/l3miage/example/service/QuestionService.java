@@ -16,6 +16,7 @@ import fr.uga.l3miage.example.response.MiahootDTO;
 import fr.uga.l3miage.example.response.QuestionDTO;
 import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,10 +33,12 @@ public class QuestionService {
     private final MiahootComponent miahootComponent;
     private final QuestionMapper questionMapper;
 
-    public void createQuestion(final String label, Long miahootId) {
+    public ResponseEntity<Long> createQuestion(final String label, Long miahootId) {
         Question newQuestionEntity = questionMapper.toEntity(label);
-        questionComponent.create(newQuestionEntity);
+        ResponseEntity<Long> reponse = questionComponent.create(newQuestionEntity);
         bind(miahootId, newQuestionEntity);
+
+        return reponse;
     }
     public List<QuestionDTO> findAllByMiahootId(Long miahootId){
         try{
