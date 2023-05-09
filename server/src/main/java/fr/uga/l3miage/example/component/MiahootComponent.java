@@ -2,6 +2,7 @@ package fr.uga.l3miage.example.component;
 
 import fr.uga.l3miage.example.error.MiahootNotFoundErrorResponse;
 
+import fr.uga.l3miage.example.exception.rest.NotFoundByStringRestException;
 import fr.uga.l3miage.example.exception.rest.NotFoundRestException;
 
 import fr.uga.l3miage.example.exception.technical.DescriptionAlreadyExistException;
@@ -27,7 +28,15 @@ public class MiahootComponent {
     private final MiahootMapper miahootMapper;
 
     public void create(final Miahoot miahoot){
+
+        try {
+
+        } catch (NotFoundByStringRestException ex) {
+            throw new NotFoundByStringRestException(String.format("Aucun utilisateur n'a été trouvé pour l'id firebase donné", "debug"), "debug");
+        }
         miahootRepository.save(miahoot);
+
+
     }
 
     public List<Miahoot> findAll(){
