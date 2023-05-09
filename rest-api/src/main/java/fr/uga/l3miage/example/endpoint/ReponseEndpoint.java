@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -26,7 +27,7 @@ public interface ReponseEndpoint {
     @ApiResponse(responseCode = "201", description = "L'entité Reponse a bien été créée.") //swagger
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("question/{questionId}/reponse")
-    void createEntityReponse(@PathVariable Long questionId, @Valid @RequestBody final CreateReponseRequest request);
+    ResponseEntity<Long> createEntityReponse(@PathVariable Long questionId, @Valid @RequestBody final CreateReponseRequest request);
 
     @Operation(description = "Affiche tous les reponses existants")
     @ApiResponse(responseCode = "200", description = "Entités reponses trouvées")

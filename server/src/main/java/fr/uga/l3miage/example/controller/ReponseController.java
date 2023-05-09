@@ -5,6 +5,7 @@ import fr.uga.l3miage.example.request.CreateReponseRequest;
 import fr.uga.l3miage.example.response.ReponseDTO;
 import fr.uga.l3miage.example.service.ReponseService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -15,8 +16,9 @@ public class ReponseController implements ReponseEndpoint {
     private final ReponseService reponseService;
 
     @Override
-    public void createEntityReponse(final Long questionId, final CreateReponseRequest request) {
-        reponseService.createReponse(questionId, request);
+    public ResponseEntity<Long> createEntityReponse(final Long questionId, final CreateReponseRequest request) {
+        ResponseEntity<Long> response = reponseService.createReponse(questionId, request);
+        return response;
     }
 
     @Override

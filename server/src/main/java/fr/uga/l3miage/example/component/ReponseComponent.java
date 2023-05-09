@@ -8,6 +8,8 @@ import fr.uga.l3miage.example.models.Session;
 import fr.uga.l3miage.example.repository.ReponseRepository;
 import fr.uga.l3miage.example.response.ReponseDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -20,8 +22,11 @@ public class ReponseComponent {
     private final SessionComponent sessionComponent;
     private final ReponseMapper reponseMapper;
 
-    public void create(final Reponse reponse){
-        reponseRepository.save(reponse);
+    public ResponseEntity<Long> create(final Reponse reponse){
+
+        Reponse rep = reponseRepository.save(reponse);
+        return ResponseEntity.status(HttpStatus.CREATED).body(rep.getId());
+
     }
 
     public List<Reponse> findAll(){

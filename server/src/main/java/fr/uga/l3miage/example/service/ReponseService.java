@@ -16,6 +16,7 @@ import fr.uga.l3miage.example.models.Utilisateur;
 import fr.uga.l3miage.example.request.CreateReponseRequest;
 import fr.uga.l3miage.example.response.ReponseDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,10 +36,12 @@ public class ReponseService {
     private final UtilisateurComponent utilisateurComponent;
     private final ReponseMapper reponseMapper;
 
-    public void createReponse(final Long questionId, CreateReponseRequest request) {
+    public ResponseEntity<Long>  createReponse(final Long questionId, CreateReponseRequest request) {
         Reponse newReponseEntity = reponseMapper.toEntity(request);
-        reponseComponent.create(newReponseEntity);
+        ResponseEntity<Long> response = reponseComponent.create(newReponseEntity);
         bind(questionId, newReponseEntity);
+
+        return response;
     }
 
     public List<ReponseDTO> findAll(){
