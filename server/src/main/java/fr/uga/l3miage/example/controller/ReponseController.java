@@ -42,10 +42,12 @@ public class ReponseController implements ReponseEndpoint {
     public void updateReponse(Long id, ReponseDTO reponseDTO) {
         reponseService.update(id,reponseDTO);
     }
-
+/*
     @Override
     public List<ReponseDTO> getUtilisateurReponsesByMiahoot(Long miahootId, String userFirebaseId) {
         return reponseService.getUtilisateurReponsesByMiahoot(miahootId, userFirebaseId);
     }
 
+
+ */
 }

@@ -34,6 +34,10 @@ public class SessionController implements SessionEndpoint {
         return sessionService.findAllByPartieId(partieId);
     }
 
+    public List<SessionDTO> findAllByParticipantFirebaseId(String firebaseId){
+        return sessionService.findAllByParticipantFirebaseId(firebaseId);
+    }
+
     @Override
     public SessionDTO findById(Long sessionId) {
         return sessionService.findById(sessionId);

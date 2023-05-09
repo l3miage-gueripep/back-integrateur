@@ -26,6 +26,9 @@ public class Partie {
     @OneToMany
     List<Session> sessions;
 
+    @ManyToOne
+    Utilisateur presentateur;
+
     public Partie(){
         this.isActive = false;
         this.date = new Date();

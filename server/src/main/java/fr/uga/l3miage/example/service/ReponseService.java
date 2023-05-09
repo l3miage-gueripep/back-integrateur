@@ -78,7 +78,7 @@ public class ReponseService {
         }
     }
 
-
+/*
     public List<ReponseDTO> getUtilisateurReponsesByMiahoot(Long miahootId, String userFirebaseId) {
         try{
             //getting the user matching userFirebaseId
@@ -103,6 +103,8 @@ public class ReponseService {
 
 
     }
+
+ */
 
     private void bind(Long questionId, Reponse reponse){
         try{

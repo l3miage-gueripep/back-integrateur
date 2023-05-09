@@ -1,11 +1,15 @@
 package fr.uga.l3miage.example.service;
 
 import fr.uga.l3miage.example.component.SessionComponent;
+import fr.uga.l3miage.example.component.UtilisateurComponent;
 import fr.uga.l3miage.example.component.PartieComponent;
 import fr.uga.l3miage.example.exception.rest.NotFoundRestException;
+import fr.uga.l3miage.example.exception.rest.NotFoundByStringRestException;
+import fr.uga.l3miage.example.exception.technical.NotFoundByStringException;
 import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.mapper.SessionMapper;
 import fr.uga.l3miage.example.models.Partie;
+import fr.uga.l3miage.example.models.Utilisateur;
 import fr.uga.l3miage.example.models.Session;
 import fr.uga.l3miage.example.request.CreateSessionRequest;
 import fr.uga.l3miage.example.response.SessionDTO;
@@ -22,6 +26,7 @@ import java.util.stream.Collectors;
 public class SessionService {
     private static final String ERROR_DETECTED = "Une erreur lors de la création de l'entité Session à été détecté.";
     private final SessionComponent sessionComponent;
+    private final UtilisateurComponent utilisateurComponent;
     private final PartieComponent partieComponent;
     private final SessionMapper sessionMapper;
 
@@ -43,6 +48,14 @@ public class SessionService {
         }
     }
 
+    public List<SessionDTO> findAllByParticipantFirebaseId(String firebaseId){
+        try{
+            return sessionComponent.findAllByParticipantfirebase(firebaseId).stream().map(sessionMapper::toDto).collect(Collectors.toList());
+        } catch (NotFoundByStringException ex){
+            throw new NotFoundByStringRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), firebaseId, ex);
+
+        }
+    }
 
     public void deleteById(Long id) {
         try {
@@ -79,4 +92,6 @@ public class SessionService {
             throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), partieId, ex);
         }
     }
+
+
 }

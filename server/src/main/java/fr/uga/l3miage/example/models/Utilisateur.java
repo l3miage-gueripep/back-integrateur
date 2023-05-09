@@ -28,15 +28,17 @@ public class Utilisateur {
     @ManyToMany
     List<Miahoot> miahootsPresentes;
 
-    @ManyToMany
-    List<Miahoot> miahootsParticipes;
+    @OneToMany(mappedBy = "participant")
+    List<Session> sessions;
 
-    @ManyToMany
-    private List<Reponse> reponses;
+    @OneToMany(mappedBy = "presentateur")
+    private List<Partie> parties;
 
-    public void addReponse(Reponse reponse){
-        this.reponses.add(reponse);
-    }
+    //@ManyToMany
+    //List<Miahoot> miahootsParticipes;
+
+    //@ManyToMany
+    //private List<Reponse> reponses;
 
     public void addMiahootConcu(Miahoot miahoot){
         this.miahootsConcus.add(miahoot);
@@ -46,8 +48,8 @@ public class Utilisateur {
         this.miahootsPresentes.add(miahoot);
     }
 
-    public void addMiahootParticipe(Miahoot miahoot){
-        this.miahootsParticipes.add(miahoot);
+    public void addPartie(Partie partie){
+        this.parties.add(partie);
     }
 
     public Utilisateur() {
@@ -59,6 +61,12 @@ public class Utilisateur {
         this.firebaseId = firebaseId;
     }
 
+    //public void addReponse(Reponse reponse){
+    //    this.reponses.add(reponse);
+    //}
 
+    //public void addMiahootParticipe(Miahoot miahoot){
+    //    this.miahootsParticipes.add(miahoot);
+    //}
 }
 

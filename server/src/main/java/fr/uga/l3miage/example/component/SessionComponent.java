@@ -1,9 +1,11 @@
 package fr.uga.l3miage.example.component;
 
+import fr.uga.l3miage.example.exception.technical.NotFoundByStringException;
 import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.mapper.SessionMapper;
 import fr.uga.l3miage.example.models.Partie;
 import fr.uga.l3miage.example.models.Session;
+import fr.uga.l3miage.example.models.Utilisateur;
 import fr.uga.l3miage.example.repository.SessionRepository;
 import fr.uga.l3miage.example.response.SessionDTO;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,7 @@ public class SessionComponent {
     private final SessionRepository sessionRepository;
     private final PartieComponent partieComponent;
     private final SessionMapper sessionMapper;
+    private final UtilisateurComponent utilisateurComponent;
 
     public void create(final Session session){
         sessionRepository.save(session);
@@ -25,8 +28,6 @@ public class SessionComponent {
     public List<Session> findAll(){
         return sessionRepository.findAll();
     }
-
-
 
     public void deleteById(Long id) throws NotFoundException {
         Session session = findById(id);
@@ -39,6 +40,14 @@ public class SessionComponent {
        return sessionRepository.findAllByPartie(partie);
     }
 
+
+    public List<Session> findAllByParticipantfirebase(String firebaseId) throws NotFoundByStringException {
+        Utilisateur participant = utilisateurComponent.findByFirebaseId(firebaseId);
+        System.out.println(participant.getSessions());
+       return sessionRepository.findAllByParticipant(participant);
+    }
+
+
     public Session findById(Long id) throws NotFoundException {
         return sessionRepository.findById(id).orElseThrow(() -> new NotFoundException(String.format("Aucune session n'a été trouvée pour l'id [%d]", id), id));
     }
@@ -49,4 +58,5 @@ public class SessionComponent {
         sessionMapper.mergeSession(actualSession, sessionDTO);
         sessionRepository.save(actualSession);
     }
+
 }

@@ -52,12 +52,14 @@ public class MiahootController implements MiahootEndpoint {
     public List<MiahootDTO> findMiahootsConcusByUser(String userFirebaseId) {
         return miahootService.findMiahootConcusByUser(userFirebaseId);
     }
-
+/*
     @Override
     public List<MiahootDTO> findMiahootsParticipesByUser(String userFirebaseId) {
         return miahootService.findMiahootParticipesByUser(userFirebaseId);
     }
 
+
+ */
 
 }
 

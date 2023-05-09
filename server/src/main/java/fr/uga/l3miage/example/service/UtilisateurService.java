@@ -11,7 +11,6 @@ import fr.uga.l3miage.example.exception.technical.NotFoundByStringException;
 import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.mapper.UtilisateurMapper;
 import fr.uga.l3miage.example.models.Miahoot;
-import fr.uga.l3miage.example.models.Reponse;
 import fr.uga.l3miage.example.models.Utilisateur;
 import fr.uga.l3miage.example.request.CreateUtilisateurRequest;
 import fr.uga.l3miage.example.response.UtilisateurDTO;
@@ -66,7 +65,7 @@ public class UtilisateurService {
             throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", e.getMessage()), id, e);
         }
     }
-
+/*
     public void submitReponse(Long reponseId, String userFirebaseId) {
         try {
             Utilisateur utilisateur = utilisateurComponent.findByFirebaseId(userFirebaseId);
@@ -76,16 +75,20 @@ public class UtilisateurService {
         }
     }
 
+ */
+/*
     public void joinMiahootParticipant(Long miahootId, String userFirebaseId) {
         bindMiahoot(miahootId, userFirebaseId, "participant");
     }
+
+ */
     public void joinMiahootPresentateur(Long miahootId, String userFirebaseId) {
         bindMiahoot(miahootId, userFirebaseId, "presentateur");
     }
     public void joinMiahootConcepteur(Long miahootId, String userFirebaseId) {
         bindMiahoot(miahootId, userFirebaseId, "concepteur");
     }
-
+/*
     public List<UtilisateurDTO> findAllByReponseId(Long reponseId){
         try{
             return utilisateurComponent.findAllByReponseId(reponseId).stream().map(utilisateurMapper::toDto).collect(Collectors.toList());
@@ -93,8 +96,8 @@ public class UtilisateurService {
             throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), reponseId, ex);
         }
     }
-
-    public List<UtilisateurDTO> findAllByMiahootParticipte(Long miahootId) {
+*/
+    /*public List<UtilisateurDTO> findAllByMiahootParticipte(Long miahootId) {
 
         try {
             return utilisateurComponent.findAllByMiahootParticipes(miahootId).stream().map(utilisateurMapper::toDto).collect(Collectors.toList());
@@ -103,10 +106,11 @@ public class UtilisateurService {
         }
 
     }
+    */
 
-    public List<UtilisateurDTO> findParticipantsByMiahoot(Long miahootId) {
-        return findUtilisateursByMiahoot(miahootId, "participant");
-    }
+    //public List<UtilisateurDTO> findParticipantsByMiahoot(Long miahootId) {
+    //    return findUtilisateursByMiahoot(miahootId, "participant");
+    //}
 
     public List<UtilisateurDTO> findPresentateursByMiahoot(Long miahootId) {
         return findUtilisateursByMiahoot(miahootId, "presentateur");
@@ -121,9 +125,9 @@ public class UtilisateurService {
             Miahoot miahoot = miahootComponent.findById(miahootId);
             List<Utilisateur> userList;
             switch (role) {
-                case "participant":
-                    userList = miahoot.getParticipants();
-                    break;
+                //case "participant":
+                //    userList = miahoot.getParticipants();
+                //    break;
                 case "presentateur":
                     userList = miahoot.getPresentateurs();
                     break;
@@ -139,6 +143,7 @@ public class UtilisateurService {
         }
     }
 
+    /*
     //executé lorsqu'un utilisateur choisit une reponse comme etant la bonne
     private void bindReponse(Long reponseId, Utilisateur utilisateur){
         try{
@@ -149,16 +154,16 @@ public class UtilisateurService {
             throw new NotFoundRestException(String.format("Impossible de charger la réponse. Raison : [%s]", ex.getMessage()), reponseId, ex);
         }
     }
-
+    */
     public void bindMiahoot(Long miahootId, String userFirebaseId, String role) {
         try {
             Utilisateur utilisateur = utilisateurComponent.findByFirebaseId(userFirebaseId);
             Miahoot miahoot = miahootComponent.findById(miahootId);
             switch (role) {
-                case "participant":
-                    utilisateur.addMiahootParticipe(miahoot);
-                    miahoot.addParticipant(utilisateur);
-                    break;
+                //case "participant":
+                //    utilisateur.addMiahootParticipe(miahoot);
+                //    miahoot.addParticipant(utilisateur);
+                //    break;
                 case "presentateur":
                     utilisateur.addMiahootPresente(miahoot);
                     miahoot.addPresentateur(utilisateur);

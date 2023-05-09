@@ -18,9 +18,10 @@ public class Session {
     Partie partie;
 
     @ManyToOne
-    Utilisateur utilisateur;
+    Utilisateur participant;
 
     @ManyToMany
     List<Reponse> reponses;
+
 
 }

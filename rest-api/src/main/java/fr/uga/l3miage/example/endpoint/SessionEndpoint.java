@@ -40,8 +40,17 @@ public interface SessionEndpoint {
     @GetMapping("partie/{partieId}/sessions")
     List<SessionDTO> findAllByPartieId(@PathVariable final Long partieId);
 
+    @Operation(description = "Obtention des Sessions pour un Participant donné") //swagger
+    @ApiResponse(responseCode = "200", description = "Les sessions ont bien été trouvé.") //swagger
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("utilisateur/{firebaseId}/sessions")
+    List<SessionDTO> findAllByParticipantFirebaseId(@PathVariable final String firebaseId);
+
+
     @Operation(description = "Affiche la Session correspondant à l'id donné")
     @ApiResponse(responseCode = "200", description = "Entité Session trouvée")
+    @ApiResponse(responseCode = "404", description = "Renvoie une erreur 404 si l'entité n'est pas trouvée",
+            content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("session/{id}")
     SessionDTO findById(@PathVariable Long id);

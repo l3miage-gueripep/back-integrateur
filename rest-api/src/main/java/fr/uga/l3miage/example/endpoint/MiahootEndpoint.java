@@ -70,11 +70,11 @@ public interface MiahootEndpoint {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("utilisateur/{userFirebaseId}/miahootsConcus")
     List<MiahootDTO> findMiahootsConcusByUser(@PathVariable String userFirebaseId);
-
+/*
     @Operation(description = "Affiche les miahoots auxquels l'utilisateur donné a participé")
     @ApiResponse(responseCode = "200", description = "Miahoots trouvés")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("utilisateur/{userFirebaseId}/miahootsParticipes")
     List<MiahootDTO> findMiahootsParticipesByUser(@PathVariable String userFirebaseId);
-
+*/
 }

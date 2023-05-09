@@ -65,11 +65,11 @@ public class MiahootService {
             throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", e.getMessage()), id, e);
         }
     }
-
+/*
     public List<MiahootDTO> findMiahootParticipesByUser(String firebaseId) {
         return findMiahootByUser(firebaseId,"participé");
     }
-
+*/
     public List<MiahootDTO> findMiahootConcusByUser(String firebaseId) {
         return findMiahootByUser(firebaseId,"conçu");
     }
@@ -89,9 +89,9 @@ public class MiahootService {
                 case "conçu":
                     miahootList = user.getMiahootsConcus();
                     break;
-                case "participé":
-                    miahootList = user.getMiahootsParticipes();
-                    break;
+                //case "participé":
+                //    miahootList = user.getMiahootsParticipes();
+                //    break;
                 default:
                     throw new IllegalArgumentException("Statut du miahoot invalide");
             }

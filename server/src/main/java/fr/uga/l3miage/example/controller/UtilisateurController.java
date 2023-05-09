@@ -40,16 +40,18 @@ public class UtilisateurController implements UtilisateurEndpoint {
     @Override
     public void updateUtilisateur(Long id, UtilisateurDTO utilisateurDTO) { utilisateurService.update(id,utilisateurDTO);
     }
-
+/*
     @Override
     public void submitReponse(Long reponseId, String userFirebaseId) {
         utilisateurService.submitReponse(reponseId,userFirebaseId);
     }
 
-    @Override
-    public void joinMiahootParticipant(Long miahootId, String userFirebaseId) {
-        utilisateurService.joinMiahootParticipant(miahootId, userFirebaseId);
-    }
+
+ */
+    //@Override
+    //public void joinMiahootParticipant(Long miahootId, String userFirebaseId) {
+    //    utilisateurService.joinMiahootParticipant(miahootId, userFirebaseId);
+    //}
 
     @Override
     public void joinMiahootPresentateur(Long miahootId, String userFirebaseId) {
@@ -61,20 +63,22 @@ public class UtilisateurController implements UtilisateurEndpoint {
         utilisateurService.joinMiahootConcepteur(miahootId, userFirebaseId);
     }
 
+    /*
     @Override
     public List<UtilisateurDTO> findAllByReponseId(Long reponseId) {
         return utilisateurService.findAllByReponseId(reponseId);
     }
 
-    @Override
-    public List<UtilisateurDTO> findAllByMiahootParticipes(Long miahootId) {
-        return utilisateurService.findAllByMiahootParticipte(miahootId);
-    }
+     */
+    //@Override
+    //public List<UtilisateurDTO> findAllByMiahootParticipes(Long miahootId) {
+    //    return utilisateurService.findAllByMiahootParticipte(miahootId);
+    //}
 
-    @Override
-    public List<UtilisateurDTO> findParticipantsByMiahoot(Long miahootId) {
-        return utilisateurService.findParticipantsByMiahoot(miahootId);
-    }
+    //@Override
+    //public List<UtilisateurDTO> findParticipantsByMiahoot(Long miahootId) {
+    //    return utilisateurService.findParticipantsByMiahoot(miahootId);
+    //}
 
     @Override
     public List<UtilisateurDTO> findPresentateursByMiahoot(Long miahootId) {

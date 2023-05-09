@@ -24,10 +24,11 @@ public class Reponse {
     @JoinColumn(name = "question.id")
     private Question question;
 
-    @ManyToMany
-    private List<Utilisateur> utilisateurs;
-
+    //@ManyToMany
+    //private List<Utilisateur> utilisateurs;
+/*
     public void addUtilisateur(Utilisateur utilisateur){
         this.utilisateurs.add(utilisateur);
     }
+ */
 }
