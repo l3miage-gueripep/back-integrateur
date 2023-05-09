@@ -2,7 +2,7 @@ package fr.uga.l3miage.example.repository;
 
 import fr.uga.l3miage.example.models.Question;
 import fr.uga.l3miage.example.models.Reponse;
-import fr.uga.l3miage.example.models.Utilisateur;
+import fr.uga.l3miage.example.models.Session;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -23,5 +23,8 @@ public interface ReponseRepository extends JpaRepository<Reponse,Long> {
     Optional<Reponse> findById(Long id);
 
     List<Reponse> findAllByQuestion(Question question);
+
+    List<Reponse> findAllBySession(Session session);
+
 
 }

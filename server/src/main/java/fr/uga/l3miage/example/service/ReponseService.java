@@ -78,6 +78,25 @@ public class ReponseService {
         }
     }
 
+    private void bind(Long questionId, Reponse reponse){
+        try{
+            Question question = questionComponent.findById(questionId);
+            question.addReponse(reponse);
+            reponse.setQuestion(question);
+        } catch(NotFoundException ex){
+            throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), questionId, ex);
+        }
+    }
+
+    public List<ReponseDTO> findAllBySessionId(Long sessionId){
+        try{
+            return reponseComponent.findAllBySessionId(sessionId).stream().map(reponseMapper::toDto).collect(Collectors.toList());
+        } catch(NotFoundException ex){
+            throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), sessionId, ex);
+        }
+    }
+
+
 /*
     public List<ReponseDTO> getUtilisateurReponsesByMiahoot(Long miahootId, String userFirebaseId) {
         try{
@@ -106,15 +125,7 @@ public class ReponseService {
 
  */
 
-    private void bind(Long questionId, Reponse reponse){
-        try{
-            Question question = questionComponent.findById(questionId);
-            question.addReponse(reponse);
-            reponse.setQuestion(question);
-        } catch(NotFoundException ex){
-            throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), questionId, ex);
-        }
-    }
+
 
 
 }

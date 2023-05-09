@@ -20,7 +20,7 @@ public class Session {
     @ManyToOne
     Utilisateur participant;
 
-    @ManyToMany
+    @OneToMany(mappedBy = "session")
     List<Reponse> reponses;
 
 

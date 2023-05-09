@@ -49,6 +49,12 @@ public interface ReponseEndpoint {
     @GetMapping("question/{questionId}/reponses")
     List<ReponseDTO> findAllByQuestionId(@PathVariable final Long questionId);
 
+    @Operation(description = "Obtention des Reponses pour une Session donnée") //swagger
+    @ApiResponse(responseCode = "200", description = "La session a bien été trouvé.") //swagger
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("session/{sessionId}/reponses")
+    List<ReponseDTO> findAllBySessionId(@PathVariable final Long sessionId);
+
     @Operation(description = "Affiche la reponse correspondant à l'id donné")
     @ApiResponse(responseCode = "200", description = "Entité réponse trouvée")
     @ResponseStatus(HttpStatus.OK)

@@ -33,6 +33,10 @@ public class ReponseController implements ReponseEndpoint {
         return reponseService.findAllByQuestionId(questionId);
     }
 
+    public List<ReponseDTO> findAllBySessionId(Long sessionId) {
+        return reponseService.findAllBySessionId(sessionId);
+    }
+
     @Override
     public ReponseDTO findById(Long reponseId) {
         return reponseService.findById(reponseId);

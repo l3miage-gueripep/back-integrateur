@@ -4,6 +4,7 @@ import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.mapper.ReponseMapper;
 import fr.uga.l3miage.example.models.Question;
 import fr.uga.l3miage.example.models.Reponse;
+import fr.uga.l3miage.example.models.Session;
 import fr.uga.l3miage.example.repository.ReponseRepository;
 import fr.uga.l3miage.example.response.ReponseDTO;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import java.util.List;
 public class ReponseComponent {
     private final ReponseRepository reponseRepository;
     private final QuestionComponent questionComponent;
+    private final SessionComponent sessionComponent;
     private final ReponseMapper reponseMapper;
 
     public void create(final Reponse reponse){
@@ -50,5 +52,11 @@ public class ReponseComponent {
         reponseRepository.save(actualReponse);
     }
 
+
+    public List<Reponse> findAllBySessionId(Long sessionId) throws NotFoundException {
+        Session session = sessionComponent.findById(sessionId);
+        System.out.println(session.getReponses());
+       return reponseRepository.findAllBySession(session);
+    }
 
 }

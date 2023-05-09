@@ -24,6 +24,9 @@ public class Reponse {
     @JoinColumn(name = "question.id")
     private Question question;
 
+    @ManyToOne
+    Session session;
+
     //@ManyToMany
     //private List<Utilisateur> utilisateurs;
 /*
