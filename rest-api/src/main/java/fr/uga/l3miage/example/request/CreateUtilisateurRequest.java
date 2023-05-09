@@ -12,7 +12,7 @@ public class CreateUtilisateurRequest {
     @Schema(description = "nom d'Utilisateur", example = "s_msk20")
     private String username;
 
-    @Schema(description = "identifiant du FireBase ", example = "12z684r138x")
+    @Schema(description = "identifiant du FireBase ", example = "UL83MSwD74UZlsVUa5otTFNs0zc2")
     private String firebaseId;
 
 }
