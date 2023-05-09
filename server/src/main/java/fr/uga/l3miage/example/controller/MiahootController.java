@@ -5,6 +5,7 @@ import fr.uga.l3miage.example.request.CreateMiahootRequest;
 import fr.uga.l3miage.example.response.MiahootDTO;
 import fr.uga.l3miage.example.service.MiahootService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,8 +18,9 @@ public class MiahootController implements MiahootEndpoint {
     private final MiahootService miahootService;
 
     @Override
-    public void createEntityMiahoot(@Valid @RequestBody final CreateMiahootRequest request) {
-        miahootService.createMiahoot(request);
+    public ResponseEntity<Long> createEntityMiahoot(@Valid @RequestBody final CreateMiahootRequest request) {
+        ResponseEntity<Long> response = miahootService.createMiahoot(request);
+        return response;
     }
 
 

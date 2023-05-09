@@ -15,6 +15,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -29,7 +30,7 @@ public interface MiahootEndpoint {
     @ApiResponse(responseCode = "201", description = "L'entité Miahoot a bien été créée.") //swagger
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("miahoot/")
-    void createEntityMiahoot(@Valid @RequestBody final CreateMiahootRequest request);
+    ResponseEntity<Long> createEntityMiahoot(@Valid @RequestBody final CreateMiahootRequest request);
 
     @Operation(description = "Affiche tous les Miahoots existants")
     @ApiResponse(responseCode = "200", description = "Entités miahoots trouvées")

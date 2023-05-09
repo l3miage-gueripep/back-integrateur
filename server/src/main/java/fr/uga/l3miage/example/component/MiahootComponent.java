@@ -16,6 +16,8 @@ import fr.uga.l3miage.example.repository.MiahootRepository;
 import fr.uga.l3miage.example.response.MiahootDTO;
 import fr.uga.l3miage.example.response.Test;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -27,14 +29,14 @@ public class MiahootComponent {
     private final MiahootRepository miahootRepository;
     private final MiahootMapper miahootMapper;
 
-    public void create(final Miahoot miahoot){
-
+    public ResponseEntity<Long> create(final Miahoot miahoot){
         try {
 
         } catch (NotFoundByStringRestException ex) {
             throw new NotFoundByStringRestException(String.format("Aucun utilisateur n'a été trouvé pour l'id firebase donné", "debug"), "debug");
         }
-        miahootRepository.save(miahoot);
+        Miahoot miahootCree = miahootRepository.save(miahoot);
+        return ResponseEntity.status(HttpStatus.CREATED).body(miahootCree.getId());
 
 
     }

@@ -12,6 +12,7 @@ import fr.uga.l3miage.example.models.Utilisateur;
 import fr.uga.l3miage.example.request.CreateMiahootRequest;
 import fr.uga.l3miage.example.response.MiahootDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,11 +30,13 @@ public class MiahootService {
     private final UtilisateurService utilisateurService;
     private final MiahootMapper miahootMapper;
 
-    public void createMiahoot(final CreateMiahootRequest createMiahootRequest) {
+    public ResponseEntity<Long> createMiahoot(final CreateMiahootRequest createMiahootRequest) {
         Miahoot newMiahootEntity = miahootMapper.toEntity(createMiahootRequest);
-        miahootComponent.create(newMiahootEntity);
+        ResponseEntity<Long> reponse = miahootComponent.create(newMiahootEntity);
         //bind le concepteur correspondant au firebase à id au nouveau miahoot
         utilisateurService.joinMiahootConcepteur(newMiahootEntity.getId(), createMiahootRequest.getFirebaseId());
+
+        return reponse;
     }
 
 
