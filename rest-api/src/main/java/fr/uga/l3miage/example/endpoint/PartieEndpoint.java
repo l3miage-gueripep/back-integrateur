@@ -33,4 +33,11 @@ public interface PartieEndpoint {
     @GetMapping("partie/")
     List<PartieDTO> getAll();
 
+
+    @Operation(description = "Obtention des Parties pour une Partie donnée") //swagger
+    @ApiResponse(responseCode = "200", description = "Le Miahoot a bien été trouvé.") //swagger
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("miahoot/{miahootId}/parties")
+    List<PartieDTO> findAllByMiahootId(@PathVariable final Long miahootId);
+
 }

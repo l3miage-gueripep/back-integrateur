@@ -22,4 +22,8 @@ public class PartieController implements PartieEndpoint {
     public List<PartieDTO> getAll() {
        return partieService.findAll();
     }
+
+    public List<PartieDTO> findAllByMiahootId(Long miahootId) {
+        return partieService.findAllByMiahootId(miahootId);
+    }
 }

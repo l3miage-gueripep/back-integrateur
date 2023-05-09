@@ -7,7 +7,6 @@ import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.mapper.PartieMapper;
 import fr.uga.l3miage.example.models.Miahoot;
 import fr.uga.l3miage.example.models.Partie;
-import fr.uga.l3miage.example.models.Question;
 import fr.uga.l3miage.example.response.PartieDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -38,6 +37,14 @@ public class PartieService {
             Miahoot miahoot = miahootComponent.findById(miahootId);
             miahoot.addPartie(partie);
             partie.setMiahoot(miahoot);
+        } catch(NotFoundException ex){
+            throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), miahootId, ex);
+        }
+    }
+
+    public List<PartieDTO> findAllByMiahootId(Long miahootId){
+        try{
+            return partieComponent.findAllByMiahootId(miahootId).stream().map(partieMapper::toDto).collect(Collectors.toList());
         } catch(NotFoundException ex){
             throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), miahootId, ex);
         }

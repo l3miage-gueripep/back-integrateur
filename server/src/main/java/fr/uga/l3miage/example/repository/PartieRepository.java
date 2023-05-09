@@ -11,4 +11,7 @@ public interface PartieRepository extends JpaRepository<Partie,Long> {
     @Override
     List<Partie> findAll();
     Optional<Partie> findById(Long id);
+
+    List<Partie> findAllByMiahoot(Miahoot miahoot);
+
 }
