@@ -27,8 +27,9 @@ public interface QuestionMapper {
     default List<QuestionReponseDTO> mapToNoIdReponse(List<Reponse> reponses) {
         return reponses.stream()
                 .map(reponse -> QuestionReponseDTO.builder()
+                        .id(reponse.getId())
                         .label(reponse.getLabel())
-                        .estCorrecte(reponse.isEstCorrect())
+                        .estCorrecte(reponse.isEstCorrecte())
                         .build())
                 .collect(Collectors.toList());
     }

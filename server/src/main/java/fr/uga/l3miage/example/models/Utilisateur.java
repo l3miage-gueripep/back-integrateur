@@ -22,16 +22,17 @@ public class Utilisateur {
     @Column(nullable = false)
     private String firebaseId;
 
-    @ManyToMany
+
+    @ManyToMany(cascade = CascadeType.ALL)
     List<Miahoot> miahootsConcus;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     List<Miahoot> miahootsPresentes;
 
-    @OneToMany(mappedBy = "participant")
+    @OneToMany(mappedBy = "participant",cascade = CascadeType.ALL)
     List<Session> sessions;
 
-    @OneToMany(mappedBy = "presentateur")
+    @OneToMany(mappedBy = "presentateur",cascade = CascadeType.ALL)
     private List<Partie> parties;
 
     //@ManyToMany

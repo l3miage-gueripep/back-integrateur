@@ -23,7 +23,7 @@ public class Partie {
     @ManyToOne
     Miahoot miahoot;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     List<Session> sessions;
 
     @ManyToOne

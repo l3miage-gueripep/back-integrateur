@@ -16,6 +16,8 @@ public interface ReponseMapper{
     @Mapping(source = "question.id", target = "questionId")
     ReponseDTO toDto(Reponse entity);
 
+
+
     Reponse toEntity(CreateReponseRequest request);
 
     void mergeReponse(@MappingTarget @NonNull Reponse reponse, ReponseDTO reponseDTO);

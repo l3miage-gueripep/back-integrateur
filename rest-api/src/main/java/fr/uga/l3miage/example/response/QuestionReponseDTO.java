@@ -8,6 +8,9 @@ import lombok.Data;
 @Builder
 @Schema(description = "dto used to show a reponse inside a question")
 public class QuestionReponseDTO {
+    @Schema(description = "correspond à l'id de la réponse ",example = "1")
+    Long id;
+
     @Schema(description = "correspond au label du reponse",example = "vrai")
     String label;
 
