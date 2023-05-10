@@ -20,25 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 public class NotFoundByStringExceptionHandler {
 
-    /*
-
-    @ExceptionHandler(NotFoundRestException.class)
-    public ResponseEntity<ErrorResponse> handle(HttpServletRequest httpServletRequest, Exception exception) {
-        NotFoundRestException ex = (NotFoundRestException) exception;
-        final NotFoundErrorResponse response = NotFoundErrorResponse.builder()
-                .uri(httpServletRequest.getRequestURI())
-                .httpStatus(ex.getHttpStatus())
-                .errorMessage(ex.getMessage())
-                .errorCode(ex.getErrorCode())
-                .id(ex.getId())
-                .build();
-
-
-        log.warn(ex.getMessage());
-        return  ResponseEntity.status(ex.getHttpStatus()).body(response);
-    }
-
-     */
 
     @ExceptionHandler(NotFoundByStringRestException.class)
     public ResponseEntity<ErrorResponse> handle(HttpServletRequest httpServletRequest, Exception exception) {

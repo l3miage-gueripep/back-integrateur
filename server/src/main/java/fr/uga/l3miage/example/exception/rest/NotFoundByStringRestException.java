@@ -22,5 +22,5 @@ public class NotFoundByStringRestException extends RuntimeException{
         return HttpStatus.NOT_FOUND;
     }
 
-    public ErrorCode getErrorCode(){return ErrorCode.TEST_IS_NOT_FOUND;}
+    public ErrorCode getErrorCode(){return ErrorCode.FIREBASEID_NOT_FOUND;}
 }

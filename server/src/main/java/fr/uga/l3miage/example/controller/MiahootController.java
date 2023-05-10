@@ -1,6 +1,8 @@
 package fr.uga.l3miage.example.controller;
 
 import fr.uga.l3miage.example.endpoint.MiahootEndpoint;
+import fr.uga.l3miage.example.models.Miahoot;
+import fr.uga.l3miage.example.models.Utilisateur;
 import fr.uga.l3miage.example.request.CreateMiahootRequest;
 import fr.uga.l3miage.example.response.MiahootDTO;
 import fr.uga.l3miage.example.service.MiahootService;
