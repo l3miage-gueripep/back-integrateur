@@ -12,5 +12,5 @@ public class QuestionReponseDTO {
     String label;
 
     @Schema(description = "correspond au valeur de la reponse s'elle est valide ou non",example = "true")
-    boolean estValide;
+    boolean estCorrecte;
 }

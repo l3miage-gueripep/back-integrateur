@@ -28,7 +28,7 @@ public interface QuestionMapper {
         return reponses.stream()
                 .map(reponse -> QuestionReponseDTO.builder()
                         .label(reponse.getLabel())
-                        .estValide(reponse.isEstValide())
+                        .estCorrecte(reponse.isEstCorrect())
                         .build())
                 .collect(Collectors.toList());
     }

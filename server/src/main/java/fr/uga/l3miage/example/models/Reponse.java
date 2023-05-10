@@ -18,7 +18,7 @@ public class Reponse {
     private String label;
 
     @Column(nullable = false)
-    private boolean estValide;
+    private boolean estCorrect;
 
     @ManyToOne
     @JoinColumn(name = "question.id")

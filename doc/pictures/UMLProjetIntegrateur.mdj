@@ -681,7 +681,7 @@
 													"top": 740,
 													"width": 247,
 													"height": 13,
-													"text": "estValide: Boolean",
+													"text": "estCorrecte: Boolean",
 													"horizontalAlignment": 0
 												}
 											],
@@ -3104,7 +3104,7 @@
 													"top": 1353,
 													"width": 102.38134765625,
 													"height": 13,
-													"text": "estValide = false",
+													"text": "estCorrecte = false",
 													"horizontalAlignment": 0
 												}
 											],
@@ -3283,7 +3283,7 @@
 													"top": 1285,
 													"width": 97.322265625,
 													"height": 13,
-													"text": "estValide = true",
+													"text": "estCorrecte = true",
 													"horizontalAlignment": 0
 												}
 											],
@@ -3462,7 +3462,7 @@
 													"top": 1557,
 													"width": 97.322265625,
 													"height": 13,
-													"text": "estValide = true",
+													"text": "estCorrecte = true",
 													"horizontalAlignment": 0
 												}
 											],
@@ -3641,7 +3641,7 @@
 													"top": 1485,
 													"width": 102.38134765625,
 													"height": 13,
-													"text": "estValide = false",
+													"text": "estCorrecte = false",
 													"horizontalAlignment": 0
 												}
 											],
@@ -4291,7 +4291,7 @@
 													"top": 1614,
 													"width": 102.38134765625,
 													"height": 13,
-													"text": "estValide = false",
+													"text": "estCorrecte = false",
 													"horizontalAlignment": 0
 												},
 												{
@@ -7421,7 +7421,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGHrlIxZvzYLr0="
 									},
-									"name": "estValide",
+									"name": "estCorrecte",
 									"type": "Boolean"
 								}
 							]
@@ -12264,7 +12264,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGHrm5HR0dR5aI="
 									},
-									"name": "estValide",
+									"name": "estCorrecte",
 									"type": "",
 									"value": "false"
 								}
@@ -12327,7 +12327,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGHrm040D+U0Iw="
 									},
-									"name": "estValide",
+									"name": "estCorrecte",
 									"type": "",
 									"value": "true"
 								}
@@ -12390,7 +12390,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGHrodH0VUaWwY="
 									},
-									"name": "estValide",
+									"name": "estCorrecte",
 									"type": "",
 									"value": "true"
 								}
@@ -12453,7 +12453,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGHroV4iEG9zG0="
 									},
-									"name": "estValide",
+									"name": "estCorrecte",
 									"type": "",
 									"value": "false"
 								}
@@ -12506,7 +12506,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGHrooVprrk2mk="
 									},
-									"name": "estValide",
+									"name": "estCorrecte",
 									"type": "",
 									"value": "false"
 								},

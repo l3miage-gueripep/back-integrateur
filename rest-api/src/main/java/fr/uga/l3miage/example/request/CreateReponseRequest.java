@@ -15,5 +15,5 @@ public class CreateReponseRequest {
     private String label;
 
     @Schema(description = "valeur de validité de l'objet reponse", example = "false")
-    private boolean estValide;
+    private boolean estCorrecte;
 }
