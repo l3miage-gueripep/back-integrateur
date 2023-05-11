@@ -37,9 +37,7 @@ public class ReponseService {
     private final ReponseMapper reponseMapper;
 
     public ResponseEntity<Long>  createReponse(final Long questionId, CreateReponseRequest request) {
-        System.out.println(request.isEstCorrecte());
         Reponse newReponseEntity = reponseMapper.toEntity(request);
-        System.out.println(newReponseEntity.isEstCorrecte());
         ResponseEntity<Long> response = reponseComponent.create(newReponseEntity);
         bind(questionId, newReponseEntity);
 

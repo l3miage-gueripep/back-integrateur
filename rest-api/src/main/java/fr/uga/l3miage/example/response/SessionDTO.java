@@ -12,7 +12,7 @@ public class SessionDTO {
     Long id;
 
     @Schema(description = "description du Session", example = "Session du groupe 8")
-    Long description;
+    String description;
 
     @Schema(description = "correspond à l'id de la partie de la session courante", example="1")
     Long partieId;

@@ -32,7 +32,7 @@ public class NotFoundByStringExceptionHandler {
                 .firebaseId(ex.getSearch())
                 .build();
 
-        log.warn(ex.getMessage());
+
         return  ResponseEntity.status(ex.getHttpStatus()).body(response);
 
     }

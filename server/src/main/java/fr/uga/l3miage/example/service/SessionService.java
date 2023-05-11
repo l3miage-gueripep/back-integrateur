@@ -31,7 +31,9 @@ public class SessionService {
     private final SessionMapper sessionMapper;
 
     public void createSession(final Long partieId, CreateSessionRequest request) {
+        System.out.println(request.getDescription());
         Session newSessionEntity = sessionMapper.toEntity(request);
+        System.out.println(newSessionEntity.getDescription());
         sessionComponent.create(newSessionEntity);
         bind(partieId, newSessionEntity);
     }

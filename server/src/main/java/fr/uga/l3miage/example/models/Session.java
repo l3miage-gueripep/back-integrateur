@@ -12,16 +12,20 @@ import java.util.List;
 public class Session {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
+
+
+    private String description;
 
     @ManyToOne
-    Partie partie;
+    @JoinColumn(name = "partie.id")
+    private Partie partie;
 
     @ManyToOne
-    Utilisateur participant;
+    private Utilisateur participant;
 
     @OneToMany(mappedBy = "session",cascade = CascadeType.ALL)
-    List<Reponse> reponses;
+    private List<Reponse> reponses;
 
 
 }

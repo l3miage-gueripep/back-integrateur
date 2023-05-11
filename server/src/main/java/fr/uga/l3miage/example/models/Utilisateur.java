@@ -47,6 +47,8 @@ public class Utilisateur {
 
     public void supprMiahootConcu(Miahoot miahoot) {this.miahootsConcus.remove(miahoot);}
 
+    public void supprMiahootPresente(Miahoot miahoot) {this.miahootsPresentes.remove((miahoot));}
+
     public void addMiahootPresente(Miahoot miahoot){
         this.miahootsPresentes.add(miahoot);
     }

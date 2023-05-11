@@ -23,7 +23,7 @@ public class Partie {
     @ManyToOne
     Miahoot miahoot;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "partie", cascade = CascadeType.ALL)
     List<Session> sessions;
 
     @ManyToOne

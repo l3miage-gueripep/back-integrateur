@@ -12,12 +12,16 @@ import java.util.List;
 @Schema(description = "correspond au DTO de l'entité Partie")
 public class PartieDTO {
 
+    @Schema(description = "id de la partie", example = "1")
     Long id;
 
+    @Schema(description = "date de la partie")
     private Date date;
 
+    @Schema(description = "id du miahoot associé", example = "1")
     Long miahootId;
 
+    @Schema(description = "est ce que la partie est active", example = "false")
     Boolean isActive;
 
 

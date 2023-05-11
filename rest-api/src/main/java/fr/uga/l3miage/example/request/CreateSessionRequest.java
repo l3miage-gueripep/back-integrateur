@@ -12,9 +12,9 @@ import lombok.Getter;
 public class CreateSessionRequest {
 
     @Schema(description = "correspond à la description de la session",example = "session du groupe 8")
-    String description;
+    private String description;
 
     @Schema(description = "correspond à l'id du partie de la session", example="1")
-    Long partieId;
+    private Long partieId;
 
 }
