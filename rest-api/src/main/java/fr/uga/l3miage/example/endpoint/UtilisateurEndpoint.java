@@ -1,11 +1,7 @@
 package fr.uga.l3miage.example.endpoint;
 
 import fr.uga.l3miage.example.error.NotFoundErrorResponse;
-import fr.uga.l3miage.example.error.TestEntityNotDeletedErrorResponse;
-import fr.uga.l3miage.example.request.CreateMiahootRequest;
-import fr.uga.l3miage.example.request.CreateReponseRequest;
 import fr.uga.l3miage.example.request.CreateUtilisateurRequest;
-import fr.uga.l3miage.example.response.MiahootDTO;
 import fr.uga.l3miage.example.response.UtilisateurDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -51,20 +47,6 @@ public interface UtilisateurEndpoint {
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PatchMapping("utilisateur/{id}")
     void updateUtilisateur(@PathVariable final Long id,@RequestBody final UtilisateurDTO utilisateurDTO);
-/*
-    @Operation(description = "Vote pour une reponse") //swagger
-    @ApiResponse(responseCode = "201", description = "Le choix de reponse a bien ete envoye.") //swagger
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("reponse/{reponseId}/user/{userFirebaseId}")
-    void submitReponse(@PathVariable Long reponseId, @Valid @RequestParam final String userFirebaseId);
-
-
- */
-    //@Operation(description = "Rejoins un miahoot en tant que participant") //swagger
-    //@ApiResponse(responseCode = "200", description = "Le miahoot a bien été rejoint") // swagger
-    //@ResponseStatus(HttpStatus.OK)
-    //@PostMapping("miahoot/{miahootId}/participant/{userFirebaseId}")
-    //void joinMiahootParticipant(@PathVariable Long miahootId, @Valid @RequestParam final String userFirebaseId);
 
     @Operation(description = "Rejoins un miahoot en tant que presentateur") //swagger
     @ApiResponse(responseCode = "200", description = "Le miahoot a bien été rejoint") // swagger
@@ -77,32 +59,12 @@ public interface UtilisateurEndpoint {
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("miahoot/{miahootId}/concepteur/{userFirebaseId}")
     void joinMiahootConcepteur(@PathVariable Long miahootId, @Valid @RequestParam final String userFirebaseId);
-/*
-    @Operation(description = "Affiche les utilisateurs correspondant à la réponse donnée")
-    @ApiResponse(responseCode = "200", description = "Entités utilisateurs trouvées")
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("reponse/{reponseId}/users")
-    List<UtilisateurDTO> findAllByReponseId(@PathVariable Long reponseId);
-*/
 
-    //@Operation(description = "Affiche les utilisateurs qui ont participé au miahoot donné") //swagger
-    //@ApiResponse(responseCode = "200", description = "Entité utilisateurs trouvés")//swagger
-    //@ResponseStatus(HttpStatus.OK)
-    //@GetMapping("miahoot/{miahootId}/users")
-    //List<UtilisateurDTO> findAllByMiahootParticipes(@PathVariable Long miahootId);
-/*
-    @Operation(description = "Affiche les participants correspondant au miahoot donné")
-    @ApiResponse(responseCode = "200", description = "Miahoot trouvé")
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("miahoot/{miahootId}/participants")
-    List<UtilisateurDTO> findParticipantsByMiahoot(@PathVariable Long miahootId);
-*/
     @Operation(description = "Affiche les presentateurs correspondant au miahoot donné")
     @ApiResponse(responseCode = "200", description = "Miahoot trouvé")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("miahoot/{miahootId}/presentateurs")
     List<UtilisateurDTO> findPresentateursByMiahoot(@PathVariable Long miahootId);
-
 
     @Operation(description = "Affiche les concepteurs correspondant au miahoot donné")
     @ApiResponse(responseCode = "200", description = "Miahoot trouvé")

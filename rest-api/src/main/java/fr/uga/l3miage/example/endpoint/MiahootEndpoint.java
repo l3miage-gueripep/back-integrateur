@@ -1,13 +1,9 @@
 package fr.uga.l3miage.example.endpoint;
 
-import fr.uga.l3miage.example.annotations.Error400Custom;
 import fr.uga.l3miage.example.error.NotFoundErrorResponse;
 import fr.uga.l3miage.example.error.TestEntityNotDeletedErrorResponse;
-import fr.uga.l3miage.example.error.TestNotFoundErrorResponse;
 import fr.uga.l3miage.example.request.CreateMiahootRequest;
-import fr.uga.l3miage.example.request.CreateTestRequest;
 import fr.uga.l3miage.example.response.MiahootDTO;
-import fr.uga.l3miage.example.response.Test;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -71,11 +67,5 @@ public interface MiahootEndpoint {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("utilisateur/{userFirebaseId}/miahootsConcus")
     List<MiahootDTO> findMiahootsConcusByUser(@PathVariable String userFirebaseId);
-/*
-    @Operation(description = "Affiche les miahoots auxquels l'utilisateur donné a participé")
-    @ApiResponse(responseCode = "200", description = "Miahoots trouvés")
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("utilisateur/{userFirebaseId}/miahootsParticipes")
-    List<MiahootDTO> findMiahootsParticipesByUser(@PathVariable String userFirebaseId);
-*/
+
 }
