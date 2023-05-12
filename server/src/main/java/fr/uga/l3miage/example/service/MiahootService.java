@@ -6,8 +6,6 @@ import fr.uga.l3miage.example.exception.rest.*;
 import fr.uga.l3miage.example.exception.technical.*;
 import fr.uga.l3miage.example.mapper.MiahootMapper;
 import fr.uga.l3miage.example.models.Miahoot;
-import fr.uga.l3miage.example.models.Question;
-import fr.uga.l3miage.example.models.Reponse;
 import fr.uga.l3miage.example.models.Utilisateur;
 import fr.uga.l3miage.example.request.CreateMiahootRequest;
 import fr.uga.l3miage.example.response.MiahootDTO;
@@ -68,11 +66,7 @@ public class MiahootService {
             throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", e.getMessage()), id, e);
         }
     }
-/*
-    public List<MiahootDTO> findMiahootParticipesByUser(String firebaseId) {
-        return findMiahootByUser(firebaseId,"participé");
-    }
-*/
+
     public List<MiahootDTO> findMiahootConcusByUser(String firebaseId) {
         return findMiahootByUser(firebaseId,"conçu");
     }
@@ -92,9 +86,6 @@ public class MiahootService {
                 case "conçu":
                     miahootList = user.getMiahootsConcus();
                     break;
-                //case "participé":
-                //    miahootList = user.getMiahootsParticipes();
-                //    break;
                 default:
                     throw new IllegalArgumentException("Statut du miahoot invalide");
             }
@@ -104,17 +95,4 @@ public class MiahootService {
         }
     }
 
-
-
-
-
-    private void bind(String firebaseId, Miahoot miahoot){
-        try{
-            Utilisateur concepteur = utilisateurComponent.findByFirebaseId(firebaseId);
-            concepteur.addMiahootConcu(miahoot);
-            miahoot.setConcepteurs((List<Utilisateur>) concepteur);
-        } catch (NotFoundByStringException e) {
-            throw new NotFoundByStringRestException(String.format("Impossible de charger l'entité. Raison : [%s]", e.getMessage()), firebaseId, e);
-        }
-    }
 }

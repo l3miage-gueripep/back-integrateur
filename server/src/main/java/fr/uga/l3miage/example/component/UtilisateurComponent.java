@@ -1,25 +1,16 @@
 package fr.uga.l3miage.example.component;
 
-import fr.uga.l3miage.example.error.MiahootNotFoundErrorResponse;
-
 import fr.uga.l3miage.example.exception.rest.NotFoundByStringRestException;
-import fr.uga.l3miage.example.exception.rest.NotFoundRestException;
 
 import fr.uga.l3miage.example.exception.technical.*;
-import fr.uga.l3miage.example.mapper.MiahootMapper;
 import fr.uga.l3miage.example.mapper.UtilisateurMapper;
 import fr.uga.l3miage.example.models.*;
-import fr.uga.l3miage.example.repository.MiahootRepository;
-import fr.uga.l3miage.example.repository.ReponseRepository;
 import fr.uga.l3miage.example.repository.UtilisateurRepository;
-import fr.uga.l3miage.example.response.MiahootDTO;
-import fr.uga.l3miage.example.response.Test;
 import fr.uga.l3miage.example.response.UtilisateurDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -46,19 +37,6 @@ public class UtilisateurComponent {
         return utilisateurRepository.findByFirebaseId(firebaseId).orElseThrow(() -> new NotFoundByStringRestException(String.format("Aucun utilisateur n'a été trouvé pour l'id firebase [%s]", firebaseId), firebaseId));
     }
 
-    public void deleteById(Long id) {
-        try {
-            Utilisateur u = findById(id);
-            for(Miahoot m : u.getMiahootsPresentes()) {
-                m.supprPresentateur(u);
-            }
-
-        } catch (NotFoundException ex) {
-            throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), id, ex);
-        }
-        utilisateurRepository.deleteById(id);
-    }
-
     public void updateUtilisateur(final Long id, final UtilisateurDTO utilisateurDTO) throws  NotFoundException {
 
         Utilisateur actualUtilisateur = utilisateurRepository.findById(id)
@@ -66,19 +44,5 @@ public class UtilisateurComponent {
         utilisateurMapper.mergeTestEntity(actualUtilisateur, utilisateurDTO);
         utilisateurRepository.save(actualUtilisateur);
     }
-
-
-/*
-    public List<Utilisateur> findAllByReponseId(Long reponseId) throws NotFoundException {
-        Reponse reponse = reponseComponent.findById(reponseId);
-        return utilisateurRepository.findByReponsesContaining(reponse);
-    }
-*/
-/*
-    public List<Utilisateur> findAllByMiahootParticipes(Long miahootId) throws NotFoundException {
-        Miahoot miahoot = miahootComponent.findById(miahootId);
-        return utilisateurRepository.findByMiahootsParticipes(miahoot);
-    }
-*/
 
 }

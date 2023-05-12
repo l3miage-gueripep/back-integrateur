@@ -5,14 +5,10 @@ import fr.uga.l3miage.example.component.MiahootComponent;
 import fr.uga.l3miage.example.component.QuestionComponent;
 
 import fr.uga.l3miage.example.exception.rest.NotFoundRestException;
-import fr.uga.l3miage.example.exception.rest.TestEntityNotFoundRestException;
-
 
 import fr.uga.l3miage.example.mapper.QuestionMapper;
 import fr.uga.l3miage.example.models.Miahoot;
 import fr.uga.l3miage.example.models.Question;
-import fr.uga.l3miage.example.request.CreateQuestionRequest;
-import fr.uga.l3miage.example.response.MiahootDTO;
 import fr.uga.l3miage.example.response.QuestionDTO;
 import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import lombok.RequiredArgsConstructor;

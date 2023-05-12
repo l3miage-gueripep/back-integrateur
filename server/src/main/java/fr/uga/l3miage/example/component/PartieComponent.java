@@ -2,7 +2,6 @@ package fr.uga.l3miage.example.component;
 
 import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.models.*;
-import fr.uga.l3miage.example.repository.MiahootRepository;
 import fr.uga.l3miage.example.repository.PartieRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,6 @@
 package fr.uga.l3miage.example.controller;
 
 import fr.uga.l3miage.example.endpoint.SessionEndpoint;
-import fr.uga.l3miage.example.models.Session;
 import fr.uga.l3miage.example.request.CreateSessionRequest;
 import fr.uga.l3miage.example.response.SessionDTO;
 import fr.uga.l3miage.example.service.SessionService;

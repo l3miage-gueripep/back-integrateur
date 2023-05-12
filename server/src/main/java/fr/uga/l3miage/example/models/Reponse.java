@@ -3,8 +3,6 @@ package fr.uga.l3miage.example.models;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
-
 
 @Entity
 @Getter
@@ -27,11 +25,4 @@ public class Reponse {
     @ManyToOne
     Session session;
 
-    //@ManyToMany
-    //private List<Utilisateur> utilisateurs;
-/*
-    public void addUtilisateur(Utilisateur utilisateur){
-        this.utilisateurs.add(utilisateur);
-    }
- */
 }

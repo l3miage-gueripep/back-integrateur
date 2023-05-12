@@ -1,7 +1,6 @@
 package fr.uga.l3miage.example.repository;
 
 import fr.uga.l3miage.example.models.Miahoot;
-import fr.uga.l3miage.example.models.TestEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

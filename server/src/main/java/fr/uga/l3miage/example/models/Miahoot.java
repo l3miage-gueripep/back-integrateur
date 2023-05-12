@@ -33,26 +33,13 @@ public class Miahoot {
     @ManyToMany(mappedBy = "miahootsPresentes")
     List<Utilisateur> presentateurs;
 
-    //@ManyToMany(mappedBy = "miahootsParticipes")
-    //List<Utilisateur> participants;
-
-    public void setConcepteurs(List<Utilisateur> concepteurs) {
-        this.concepteurs = concepteurs;
-    }
-
     public void addQuestion(Question question){
         questions.add(question);
     }
 
-    public void supprPresentateur(Utilisateur utilisateur) { this.presentateurs.remove(utilisateur);};
-
     public void addPresentateur(Utilisateur presentateur){
         this.presentateurs.add(presentateur);
     }
-
-    //public void addParticipant(Utilisateur participant){
-    //    this.participants.add(participant);
-    //}
 
     public void addConcepteur(Utilisateur utilisateur){
         this.concepteurs.add(utilisateur);
@@ -67,7 +54,6 @@ public class Miahoot {
         // Initialize the list property
         this.parties = new ArrayList<>();
         this.questions = new ArrayList<>();
-        //this.participants = new ArrayList<>();
         this.presentateurs = new ArrayList<>();
         this.concepteurs = new ArrayList<>();
     }

@@ -9,7 +9,6 @@ import fr.uga.l3miage.example.exception.technical.NotFoundByStringException;
 import fr.uga.l3miage.example.exception.technical.NotFoundException;
 import fr.uga.l3miage.example.mapper.SessionMapper;
 import fr.uga.l3miage.example.models.Partie;
-import fr.uga.l3miage.example.models.Utilisateur;
 import fr.uga.l3miage.example.models.Session;
 import fr.uga.l3miage.example.request.CreateSessionRequest;
 import fr.uga.l3miage.example.response.SessionDTO;

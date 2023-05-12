@@ -1,8 +1,6 @@
 package fr.uga.l3miage.example.controller;
 
 import fr.uga.l3miage.example.endpoint.MiahootEndpoint;
-import fr.uga.l3miage.example.models.Miahoot;
-import fr.uga.l3miage.example.models.Utilisateur;
 import fr.uga.l3miage.example.request.CreateMiahootRequest;
 import fr.uga.l3miage.example.response.MiahootDTO;
 import fr.uga.l3miage.example.service.MiahootService;
@@ -56,14 +54,6 @@ public class MiahootController implements MiahootEndpoint {
     public List<MiahootDTO> findMiahootsConcusByUser(String userFirebaseId) {
         return miahootService.findMiahootConcusByUser(userFirebaseId);
     }
-/*
-    @Override
-    public List<MiahootDTO> findMiahootsParticipesByUser(String userFirebaseId) {
-        return miahootService.findMiahootParticipesByUser(userFirebaseId);
-    }
-
-
- */
 
 }
 

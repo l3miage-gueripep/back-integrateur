@@ -35,12 +35,6 @@ public class Utilisateur {
     @OneToMany(mappedBy = "presentateur",cascade = CascadeType.ALL)
     private List<Partie> parties;
 
-    //@ManyToMany
-    //List<Miahoot> miahootsParticipes;
-
-    //@ManyToMany
-    //private List<Reponse> reponses;
-
     public void addMiahootConcu(Miahoot miahoot){
         this.miahootsConcus.add(miahoot);
     }
@@ -53,10 +47,6 @@ public class Utilisateur {
         this.miahootsPresentes.add(miahoot);
     }
 
-    public void addPartie(Partie partie){
-        this.parties.add(partie);
-    }
-
     public Utilisateur() {
     }
 
@@ -66,12 +56,5 @@ public class Utilisateur {
         this.firebaseId = firebaseId;
     }
 
-    //public void addReponse(Reponse reponse){
-    //    this.reponses.add(reponse);
-    //}
-
-    //public void addMiahootParticipe(Miahoot miahoot){
-    //    this.miahootsParticipes.add(miahoot);
-    //}
 }
 
