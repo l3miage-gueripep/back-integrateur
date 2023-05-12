@@ -52,8 +52,8 @@ public interface SessionEndpoint {
     @ApiResponse(responseCode = "404", description = "Renvoie une erreur 404 si l'entité n'est pas trouvée",
             content = @Content(schema = @Schema(implementation = NotFoundErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("session/{id}")
-    SessionDTO findById(@PathVariable Long id);
+    @GetMapping("session/{sessionId}")
+    SessionDTO findById(@PathVariable Long sessionId);
 
     @Operation(description = "Mise à jour d'une entité Session")
     @ApiResponse(responseCode = "202", description = "L'entité à bien été mis à jour")

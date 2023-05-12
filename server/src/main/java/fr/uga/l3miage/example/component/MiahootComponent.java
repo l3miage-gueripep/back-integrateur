@@ -56,6 +56,7 @@ public class MiahootComponent {
             for(Utilisateur u : m.getConcepteurs()) {
                 u.supprMiahootConcu(m);
                 u.supprMiahootPresente(m);
+
             }
         } catch (NotFoundException ex) {
             throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), id, ex);

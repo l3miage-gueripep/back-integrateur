@@ -36,14 +36,14 @@ public class SessionComponent {
 
     public List<Session> findAllByPartieId(Long partieId) throws NotFoundException {
         Partie partie = partieComponent.findById(partieId);
-        System.out.println(partie.getSessions());
+
        return sessionRepository.findAllByPartie(partie);
     }
 
 
     public List<Session> findAllByParticipantfirebase(String firebaseId) throws NotFoundByStringException {
         Utilisateur participant = utilisateurComponent.findByFirebaseId(firebaseId);
-        System.out.println(participant.getSessions());
+
        return sessionRepository.findAllByParticipant(participant);
     }
 

@@ -42,7 +42,7 @@ public class ReponseComponent {
 
     public List<Reponse> findAllByQuestionId(Long questionId) throws NotFoundException {
         Question question = questionComponent.findById(questionId);
-        System.out.println(question.getReponses());
+
         return reponseRepository.findAllByQuestion(question);
     }
 
@@ -60,7 +60,6 @@ public class ReponseComponent {
 
     public List<Reponse> findAllBySessionId(Long sessionId) throws NotFoundException {
         Session session = sessionComponent.findById(sessionId);
-        System.out.println(session.getReponses());
        return reponseRepository.findAllBySession(session);
     }
 

@@ -44,6 +44,8 @@ public class Miahoot {
         questions.add(question);
     }
 
+    public void supprPresentateur(Utilisateur utilisateur) { this.presentateurs.remove(utilisateur);};
+
     public void addPresentateur(Utilisateur presentateur){
         this.presentateurs.add(presentateur);
     }

@@ -49,6 +49,10 @@ public class UtilisateurComponent {
     public void deleteById(Long id) {
         try {
             Utilisateur u = findById(id);
+            for(Miahoot m : u.getMiahootsPresentes()) {
+                m.supprPresentateur(u);
+            }
+
         } catch (NotFoundException ex) {
             throw new NotFoundRestException(String.format("Impossible de charger l'entité. Raison : [%s]", ex.getMessage()), id, ex);
         }

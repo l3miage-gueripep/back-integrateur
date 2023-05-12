@@ -29,7 +29,7 @@ public class PartieComponent {
 
     public List<Partie> findAllByMiahootId(Long miahootId) throws NotFoundException {
         Miahoot miahoot = miahootComponent.findById(miahootId);
-        System.out.println(miahoot.getParties());
+
         return partieRepository.findAllByMiahoot(miahoot);
     }
 

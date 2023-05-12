@@ -32,10 +32,7 @@ public class UtilisateurController implements UtilisateurEndpoint {
         return utilisateurService.findById(id);
     }
 
-    @Override
-    public void deleteUtilisateur(Long id) {
-        utilisateurService.deleteById(id);
-    }
+
 
     @Override
     public void updateUtilisateur(Long id, UtilisateurDTO utilisateurDTO) { utilisateurService.update(id,utilisateurDTO);

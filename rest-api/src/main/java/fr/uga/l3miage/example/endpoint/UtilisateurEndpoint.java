@@ -42,14 +42,7 @@ public interface UtilisateurEndpoint {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("utilisateur/{id}")
     UtilisateurDTO findById(@PathVariable Long id);
-
-    @Operation(description = "Suppression d'une entité Utilisateur en bd")
-    @ApiResponse(responseCode = "200", description = "L'Utilisateur a bien été supprimé")
-    @ApiResponse(responseCode = "418", description = "Renvoie une erreur 418 si l'entité n'a pu être supprimée",
-            content = @Content(schema = @Schema(implementation = TestEntityNotDeletedErrorResponse.class),mediaType = MediaType.APPLICATION_JSON_VALUE))
-    @ResponseStatus(HttpStatus.OK)
-    @DeleteMapping("utilisateur/{id}")
-    void deleteUtilisateur(@PathVariable Long id);
+    
 
     @Operation(description = "Mise à jour d'une entité utilisateur")
     @ApiResponse(responseCode = "202", description = "L'entité à bien été mis à jour")
